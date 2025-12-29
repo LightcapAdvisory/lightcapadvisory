@@ -13,7 +13,7 @@ body {
 @plugin '@tailwindcss/typography';
 
 @theme {
-    --font-body: var(--theme-font-body, monospace);
+    --font-body: var(--theme-font-body, var(--font-primary));
     --background-color-main: var(--theme-dark);
     --background-color-inverse: var(--theme-on-dark);
     --text-color-main: var(--theme-on-dark);
@@ -40,9 +40,10 @@ body {
     h5,
     h6 {
         @apply break-words;
-        line-height: 1.15;
-        font-weight: var(--theme-heading-weight);
-        text-transform: var(--theme-heading-case);
+    	font-family: var(--font-secondary); /* DM Sans */
+    	line-height: 1.2;
+    	font-weight: 500;
+    	text-transform: var(--theme-heading-case);
     }
 
     b,
