@@ -4,8 +4,8 @@ title: Home
 colors: colors-a
 backgroundImage:
   type: BackgroundImage
-  url: /images/bg1.jpg
-  backgroundSize: cover
+  url: \images\lightcap_advisory_website_background.png
+  backgroundSize: auto
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 75
@@ -37,64 +37,104 @@ sections:
         textAlign: left
     type: HeroSection
     actions: []
-  - colors: colors-f
-    type: FeaturedProjectsSection
-    elementId: ''
-    actions:
-      - type: Link
-        label: See all projects
-        url: /projects
-    showDate: false
-    showDescription: true
-    showFeaturedImage: true
-    showReadMoreLink: true
-    variant: variant-b
-    projects:
-      - content/pages/projects/project-two.md
-      - content/pages/projects/project-three.md
-      - content/pages/projects/project-one.md
-    styles:
-      self:
-        height: auto
-        width: wide
-        padding:
-          - pt-24
-          - pb-24
-          - pl-4
-          - pr-4
-        textAlign: left
-    subtitle: Projects
-  - type: FeaturedPostsSection
-    elementId: ''
+  - type: FeaturedItemsSection
+    title: Services
+    items:
+      - type: FeaturedItem
+        title: Discovery & Requirements (Lite)
+        subtitle: ''
+        text: >+
+          *   Short-term engagement to validate software product ideas and
+          capture essential requirements
+
+
+          <!---->
+
+
+          *   Ideal for startups wanting quick insight without long commitments
+
+
+
+        featuredImage:
+          type: ImageBlock
+          url: \images\requirements_icon.png
+          altText: Item image
+          caption: Caption of the image
+          elementId: ''
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: Full Strategy + Discovery + Deep Requirements
+        subtitle: ''
+        text: >+
+          *   Comprehensive product strategy, roadmaps, and detailed
+          requirements for scalable execution\*   
+
+
+          <!---->
+
+
+          *   Perfect for companies preparing major product initiatives
+
+        featuredImage:
+          type: ImageBlock
+          url: \images\strategy_icon.png
+          altText: Item image
+          caption: Caption of the image
+          elementId: ''
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: Strategy + Requirements + Fractional Product Leadership
+        subtitle: ''
+        text: >+
+          *   End-to-end software product guidance, including ongoing fractional
+          leadership and hands-on execution support\*  
+
+
+          <!---->
+
+
+          *   For organizations needing both strategy and operational product
+          oversight
+
+        featuredImage:
+          type: ImageBlock
+          url: \images\leadership_partnership_icon.png
+          altText: Item image
+          caption: Caption of the image
+          elementId: ''
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+    actions: []
     colors: colors-f
-    variant: variant-d
-    subtitle: Featured Posts
-    showFeaturedImage: false
-    actions:
-      - type: Link
-        label: See all posts
-        url: /blog
-    posts:
-      - content/pages/blog/post-six.md
-      - content/pages/blog/post-four.md
-      - content/pages/blog/post-three.md
-    showDate: true
-    showExcerpt: true
-    showReadMoreLink: true
+    columns: 1
+    spacingX: 16
+    spacingY: 16
+    elementId: ''
     styles:
       self:
         height: auto
         width: narrow
         padding:
           - pt-28
-          - pb-48
+          - pb-36
           - pl-4
           - pr-4
         textAlign: left
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
-    title: Got an interesting project? Tell me more...💬
+    title: Let’s Talk About Your Product
     form:
       type: FormBlock
       elementId: sign-up-form
@@ -120,18 +160,20 @@ sections:
           isRequired: true
           width: 1/2
           type: EmailFormControl
-        - name: address
-          label: Address
+        - type: TextFormControl
+          name: companyName
+          label: Company Name
           hideLabel: true
-          placeholder: Address
-          isRequired: true
+          placeholder: Company Name
           width: 1/2
-          type: TextFormControl
-        - name: updatesConsent
-          label: Sign me up to recieve updates
           isRequired: false
+        - type: TextareaFormControl
+          name: messageInquiry
+          label: Message / Inquiry
+          hideLabel: false
+          placeholder: Type your message here
           width: full
-          type: CheckboxFormControl
+          isRequired: false
       submitLabel: Submit 🚀
       styles:
         self:
@@ -152,4 +194,16 @@ sections:
           - pl-4
         flexDirection: row
         textAlign: left
+    text: >
+      Ready to transform your software product strategy into actionable
+      outcomes? Contact Lightcap Advisory today to discuss how we can help you:
+
+
+      *   Validate and refine your product vision
+
+
+      *   Develop a clear roadmap and detailed requirements
+
+
+      *   Provide fractional product leadership tailored to your team’s needs
 ---
