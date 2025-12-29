@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --font-primary: 'Inter', system-ui, sans-serif;
-  --font-secondary: 'Inter', system-ui, sans-serif;
+  --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-secondary: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -43,6 +43,7 @@ body {
     	font-family: var(--font-secondary); /* DM Sans */
     	line-height: 1.2;
     	font-weight: 500;
+	letter-spacing: 0.02em;
     	text-transform: var(--theme-heading-case);
     }
 
