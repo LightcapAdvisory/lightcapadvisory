@@ -1,12 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-secondary: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-secondary: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  font-family: var(--font-primary);
+    font-family: var(--font-primary);
+    background-image: url('/your-background.jpg');
+    /* path relative to /public */
+    background-size: cover;
+    /* makes it fill the viewport */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* optional: makes it stay on scroll */
 }
 
 @import 'tailwindcss';
@@ -29,10 +37,11 @@ body {
 
     body {
         @apply flex flex-col min-h-screen;
-        font-family: var(--font-primary); /* Inter */
+        font-family: var(--font-primary);
+        /* Inter */
     }
 
-    body > div {
+    body>div {
         @apply flex flex-col grow;
     }
 
@@ -43,7 +52,8 @@ body {
     h5,
     h6 {
         @apply break-words;
-        font-family: var(--font-secondary); /* DM Sans */
+        font-family: var(--font-secondary);
+        /* DM Sans */
         line-height: 1.2;
         font-weight: 500;
         letter-spacing: 0.02em;
@@ -52,7 +62,8 @@ body {
 
     /* Ensure Markdown/content inside .prose also uses correct fonts */
     .prose {
-        font-family: var(--font-primary); /* Inter */
+        font-family: var(--font-primary);
+        /* Inter */
     }
 
     b,
@@ -84,24 +95,28 @@ body {
         --text-color-main: var(--theme-on-light);
         --text-color-inverse: var(--theme-light);
     }
+
     :where([data-theme='colors-c']) {
         --background-color-main: var(--theme-primary);
         --background-color-inverse: var(--theme-on-primary);
         --text-color-main: var(--theme-on-primary);
         --text-color-inverse: var(--theme-primary);
     }
+
     :where([data-theme='colors-d']) {
         --background-color-main: var(--theme-secondary);
         --background-color-inverse: var(--theme-on-secondary);
         --text-color-main: var(--theme-on-secondary);
         --text-color-inverse: var(--theme-secondary);
     }
+
     :where([data-theme='colors-e']) {
         --background-color-main: var(--theme-complementary);
         --background-color-inverse: var(--theme-on-complementary);
         --text-color-main: var(--theme-on-complementary);
         --text-color-inverse: var(--theme-complementary);
     }
+
     :where([data-theme^='colors-']):not([data-theme='colors-f']) {
         @apply bg-main text-main;
     }
@@ -110,9 +125,11 @@ body {
     form data:has([class*='sm:col-span-2']) {
         @apply sm:col-span-2;
     }
+
     nav data:has([class*='sm:col-start-2']) {
         @apply sm:col-start-2;
     }
+
     li data:has([class*='link-fill']) {
         @apply inline-flex;
     }
@@ -165,11 +182,9 @@ body {
 
 @utility link-fill {
     @apply transition-all text-main;
-    background-image: linear-gradient(
-        to bottom,
-        var(--background-color-inverse) 0%,
-        var(--background-color-inverse) 100%
-    );
+    background-image: linear-gradient(to bottom,
+            var(--background-color-inverse) 0%,
+            var(--background-color-inverse) 100%);
     background-size: 100% 0%;
     background-repeat: no-repeat;
 
