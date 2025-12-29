@@ -11,6 +11,7 @@ export default function FeaturedItem(props) {
     const { self = {} } = styles;
     const { borderWidth, ...otherSelfStyles } = self;
     const TitleTag = headingLevel;
+
     return (
         <Annotated content={props}>
             <article
@@ -20,36 +21,43 @@ export default function FeaturedItem(props) {
                     borderWidth: borderWidth ? `${borderWidth}px` : null
                 }}
             >
-                {featuredImage && (
-                    <div className="mb-6">
-                        <ImageBlock {...featuredImage} className="inline-block" />
+                <div className="flex items-start mb-6">
+                    {featuredImage && (
+                        <div className="flex-shrink-0 mr-4">
+                            <ImageBlock
+                                {...featuredImage}
+                                className="w-12 h-12 md:w-16 md:h-16"
+                            />
+                        </div>
+                    )}
+                    <div>
+                        {title && <TitleTag className="text-2xl sm:text-3xl font-semibold">{title}</TitleTag>}
+                        {subtitle && <p className={classNames('text-lg', { 'mt-1': title })}>{subtitle}</p>}
+                        {text && (
+                            <Markdown
+                                options={{ forceBlock: true, forceWrapper: true }}
+                                className={classNames('prose sm:prose-lg', {
+                                    'mt-2': title || subtitle
+                                })}
+                            >
+                                {text}
+                            </Markdown>
+                        )}
+                        {actions?.length > 0 && (
+                            <div
+                                className={classNames('flex flex-wrap items-center gap-4', {
+                                    'justify-center': otherSelfStyles.textAlign === 'center',
+                                    'justify-end': otherSelfStyles.textAlign === 'right',
+                                    'mt-4': title || subtitle || text
+                                })}
+                            >
+                                {actions.map((action, index) => (
+                                    <Action key={index} {...action} />
+                                ))}
+                            </div>
+                        )}
                     </div>
-                )}
-                {title && <TitleTag className="text-3xl sm:text-4xl">{title}</TitleTag>}
-                {subtitle && <p className={classNames('text-lg', { 'mt-1': title })}>{subtitle}</p>}
-                {text && (
-                    <Markdown
-                        options={{ forceBlock: true, forceWrapper: true }}
-                        className={classNames('prose sm:prose-lg', {
-                            'mt-4': title || subtitle
-                        })}
-                    >
-                        {text}
-                    </Markdown>
-                )}
-                {actions?.length > 0 && (
-                    <div
-                        className={classNames('flex flex-wrap items-center gap-4', {
-                            'justify-center': otherSelfStyles.textAlign === 'center',
-                            'justify-end': otherSelfStyles.textAlign === 'right',
-                            'mt-4': title || subtitle || text
-                        })}
-                    >
-                        {actions.map((action, index) => (
-                            <Action key={index} {...action} />
-                        ))}
-                    </div>
-                )}
+                </div>
             </article>
         </Annotated>
     );

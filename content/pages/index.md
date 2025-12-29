@@ -2,18 +2,11 @@
 type: PageLayout
 title: Home
 colors: colors-a
-backgroundImage:
-  type: BackgroundImage
-  url: \images\lightcap_advisory_website_background.png
-  backgroundSize: auto
-  backgroundPosition: center
-  backgroundRepeat: no-repeat
-  opacity: 75
 sections:
   - elementId: ''
     colors: colors-f
     backgroundSize: full
-    title: From Strategy to Execution — Product Leadership That Scales With You
+    title: Strategy to Execution — Product Leadership That Scales With You
     subtitle: >-
       Helping startups, scale-ups, and tech companies build and grow software
       products that turn vision into actionable outcomes. We deliver strategy,
@@ -51,9 +44,8 @@ sections:
           <!---->
 
 
-          *   Ideal for startups wanting quick insight without long commitments
-
-
+          *   Ideal for startups or companies wanting quick insight without long
+          commitments
 
         featuredImage:
           type: ImageBlock
@@ -71,7 +63,7 @@ sections:
         subtitle: ''
         text: >+
           *   Comprehensive product strategy, roadmaps, and detailed
-          requirements for scalable execution\*   
+          requirements for scalable execution
 
 
           <!---->
@@ -95,7 +87,7 @@ sections:
         subtitle: ''
         text: >+
           *   End-to-end software product guidance, including ongoing fractional
-          leadership and hands-on execution support\*  
+          leadership and hands-on execution support
 
 
           <!---->
@@ -170,8 +162,8 @@ sections:
         - type: TextareaFormControl
           name: messageInquiry
           label: Message / Inquiry
-          hideLabel: false
-          placeholder: Type your message here
+          hideLabel: true
+          placeholder: Type your message / inquiry here
           width: full
           isRequired: false
       submitLabel: Submit 🚀
@@ -206,4 +198,10 @@ sections:
 
 
       *   Provide fractional product leadership tailored to your team’s needs
+backgroundImage:
+  type: BackgroundImage
+  backgroundSize: cover
+  backgroundPosition: center
+  backgroundRepeat: no-repeat
+  opacity: 100
 ---

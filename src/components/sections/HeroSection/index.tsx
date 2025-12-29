@@ -9,16 +9,34 @@ import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-
 import Section from '../Section';
 
 /*
- This is the only component in this codebase which has a few Stackbit annotations for specific primitive
- field. These are added by the <AnnotatedField> helper.
- The motivation for these annotations: allowing the content editor to edit styles at the field level.
- */
+ This component uses <AnnotatedField> for Stackbit editing annotations.
+*/
+
 export default function Component(props: HeroSection) {
-    const { elementId, colors, backgroundSize, title, subtitle, text, media, actions = [], styles = {} } = props;
+    const {
+        elementId,
+        colors,
+        backgroundSize,
+        backgroundImage, // <- new prop
+        title,
+        subtitle,
+        text,
+        media,
+        actions = [],
+        styles = {}
+    } = props;
+
     const sectionFlexDirection = styles.self?.flexDirection ?? 'row';
     const sectionAlign = styles.self?.textAlign ?? 'left';
+
     return (
-        <Section elementId={elementId} colors={colors} backgroundSize={backgroundSize} styles={styles.self}>
+        <Section
+            elementId={elementId}
+            colors={colors}
+            backgroundSize={backgroundSize}
+            styles={styles.self}
+            backgroundImage={backgroundImage || '/hero-background.jpg'} // default if none provided
+        >
             <div className={classNames('flex gap-8', mapFlexDirectionStyles(sectionFlexDirection))}>
                 <div className={classNames('flex-1 w-full', mapStyles({ textAlign: sectionAlign }))}>
                     {title && (
@@ -76,7 +94,9 @@ function HeroMedia({ media }) {
     return <DynamicComponent {...media} />;
 }
 
-function mapFlexDirectionStyles(flexDirection?: 'row' | 'row-reverse' | 'col' | 'col-reverse') {
+function mapFlexDirectionStyles(
+    flexDirection?: 'row' | 'row-reverse' | 'col' | 'col-reverse'
+) {
     switch (flexDirection) {
         case 'row-reverse':
             return 'flex-col-reverse lg:flex-row-reverse lg:items-center';

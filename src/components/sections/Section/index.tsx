@@ -26,7 +26,7 @@ function SectionInset(props: SectionProps) {
         <div id={elementId || null} className={classNames('flex justify-center', styles.margin)}>
             <div
                 className={classNames(
-                    'flex flex-col items-center justify-center relative w-full',
+                    'flex flex-col items-center justify-center relative w-full bg-transparent',
                     mapStyles({ width: styles.width ?? 'wide' }),
                     mapStyles({ height: styles.height ?? 'auto' }),
                     styles.padding ?? 'py-12 px-4',
@@ -45,15 +45,16 @@ function SectionInset(props: SectionProps) {
     );
 }
 
-function SectionFullWidth(props: SectionProps) {
-    const { elementId, colors = 'colors-f', styles = {}, children } = props;
+function SectionFullWidth(props: SectionProps & { backgroundImage?: string }) {
+    const { elementId, colors = 'colors-f', styles = {}, children, backgroundImage } = props;
+
     return (
         <div
             data-theme={colors}
             id={elementId || null}
             className={classNames(
-                'flex flex-col justify-center items-center',
-                mapStyles({ height: styles.height ?? 'auto' }),
+                'flex flex-col justify-center items-center relative bg-cover bg-center',
+                mapStyles({ height: styles.height ?? 'screen' }), // full viewport height
                 styles.margin,
                 styles.padding ?? 'py-12 px-4',
                 styles.borderColor,
@@ -61,10 +62,17 @@ function SectionFullWidth(props: SectionProps) {
                 styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
             )}
             style={{
-                borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : null
+                borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : null,
+                backgroundImage: backgroundImage ? `url('${backgroundImage}')` : undefined
             }}
         >
-            <div className={classNames('w-full', mapStyles({ width: styles.width ?? 'wide' }))}>{children}</div>
+            {/* Optional overlay */}
+            {backgroundImage && <div className="absolute inset-0 bg-black bg-opacity-40 pointer-events-none"></div>}
+
+            <div className={classNames('w-full relative z-10', mapStyles({ width: styles.width ?? 'wide' }))}>
+                {children}
+            </div>
         </div>
     );
 }
+
