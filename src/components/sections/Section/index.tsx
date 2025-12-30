@@ -9,21 +9,30 @@ type SectionProps = React.PropsWithChildren<{
     colors?: 'colors-a' | 'colors-b' | 'colors-c' | 'colors-d' | 'colors-e' | 'colors-f';
     backgroundSize?: 'full' | 'inset';
     styles?: any;
+    backgroundImage?: string; // <--- background image prop
 }>;
 
 export default function Section(props: SectionProps) {
     const { backgroundSize = 'full', ...rest } = props;
-    if (backgroundSize === 'inset') {
-        return <SectionInset {...rest} />;
-    } else {
-        return <SectionFullWidth {...rest} />;
-    }
+    return backgroundSize === 'inset' ? <SectionInset {...rest} /> : <SectionFullWidth {...rest} />;
 }
 
 function SectionInset(props: SectionProps) {
-    const { elementId, colors = 'colors-f', styles = {}, children } = props;
+    const { elementId, colors = 'colors-f', styles = {}, children, backgroundImage } = props;
+
     return (
-        <div id={elementId || null} className={classNames('flex justify-center', styles.margin)}>
+        <div
+            id={elementId || undefined}
+            className={classNames('flex justify-center', styles.margin)}
+            style={{
+                borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined,
+                backgroundImage: backgroundImage ? `url('${backgroundImage}')` : undefined,
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            }}
+            data-theme={colors}
+        >
             <div
                 className={classNames(
                     'flex flex-col items-center justify-center relative w-full bg-transparent',
@@ -35,9 +44,8 @@ function SectionInset(props: SectionProps) {
                     styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
                 )}
                 style={{
-                    borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : null
+                    borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined
                 }}
-                data-theme={colors}
             >
                 {children}
             </div>
@@ -45,13 +53,13 @@ function SectionInset(props: SectionProps) {
     );
 }
 
-function SectionFullWidth(props: SectionProps & { backgroundImage?: string }) {
+function SectionFullWidth(props: SectionProps) {
     const { elementId, colors = 'colors-f', styles = {}, children, backgroundImage } = props;
 
     return (
         <div
+            id={elementId || undefined}
             data-theme={colors}
-            id={elementId || null}
             className={classNames(
                 'flex flex-col justify-center items-center relative bg-cover bg-center',
                 mapStyles({ height: styles.height ?? 'screen' }), // full viewport height
@@ -62,7 +70,7 @@ function SectionFullWidth(props: SectionProps & { backgroundImage?: string }) {
                 styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
             )}
             style={{
-                borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : null,
+                borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined,
                 backgroundImage: backgroundImage ? `url('${backgroundImage}')` : undefined
             }}
         >
@@ -75,4 +83,3 @@ function SectionFullWidth(props: SectionProps & { backgroundImage?: string }) {
         </div>
     );
 }
-
