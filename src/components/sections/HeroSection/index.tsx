@@ -35,7 +35,7 @@ export default function Component(props: HeroSection) {
             colors={colors}
             backgroundSize={backgroundSize}
             styles={styles.self}
-            backgroundImage={backgroundImage || '/hero-background.jpg'} // default fallback
+            backgroundImage={backgroundImage || '/images/hero-background.jpg'} // default fallback
         >
             <div className={classNames('flex gap-8', mapFlexDirectionStyles(sectionFlexDirection))}>
                 <div className={classNames('flex-1 w-full', mapStyles({ textAlign: sectionAlign }))}>
