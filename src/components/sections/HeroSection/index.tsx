@@ -17,7 +17,7 @@ export default function Component(props: HeroSection) {
         elementId,
         colors,
         backgroundSize,
-        backgroundImage, // <- new prop
+        backgroundImage, // <- new prop for dynamic background
         title,
         subtitle,
         text,
@@ -35,7 +35,7 @@ export default function Component(props: HeroSection) {
             colors={colors}
             backgroundSize={backgroundSize}
             styles={styles.self}
-            backgroundImage={backgroundImage || '/hero-background.jpg'} // default if none provided
+            backgroundImage={backgroundImage || '/hero-background.jpg'} // default fallback
         >
             <div className={classNames('flex gap-8', mapFlexDirectionStyles(sectionFlexDirection))}>
                 <div className={classNames('flex-1 w-full', mapStyles({ textAlign: sectionAlign }))}>
