@@ -200,8 +200,9 @@ sections:
       *   Provide fractional product leadership tailored to your team’s needs
 backgroundImage:
   type: BackgroundImage
-  backgroundSize: cover
+  backgroundSize: auto
   backgroundPosition: center
   backgroundRepeat: no-repeat
   opacity: 100
+  url: \images\hero-background.jpg
 ---

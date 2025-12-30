@@ -20,7 +20,6 @@ export default function Section(props: SectionProps) {
 
 function resolveBackgroundImage(bg?: string | StaticImageData) {
     if (!bg) return undefined;
-    // if imported via next/image, bg has a .src property
     return typeof bg === 'string' ? bg : bg.src;
 }
 
@@ -45,8 +44,8 @@ function SectionInset(props: SectionProps) {
                 className={classNames(
                     'flex flex-col items-center justify-center relative w-full bg-transparent',
                     mapStyles({ width: styles.width ?? 'wide' }),
-                    mapStyles({ height: styles.height ?? 'auto' }),
-                    styles.padding ?? 'py-12 px-4',
+                    mapStyles({ height: styles.height ?? 'screen' }), // default to full viewport
+                    styles.padding ?? 'py-24 px-6', // larger padding for hero
                     styles.borderColor,
                     styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
                     styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
@@ -71,9 +70,9 @@ function SectionFullWidth(props: SectionProps) {
             data-theme={colors}
             className={classNames(
                 'flex flex-col justify-center items-center relative bg-cover bg-center',
-                mapStyles({ height: styles.height ?? 'screen' }),
+                mapStyles({ height: styles.height ?? 'screen' }), // default full viewport
                 styles.margin,
-                styles.padding ?? 'py-12 px-4',
+                styles.padding ?? 'py-24 px-6', // larger padding for hero
                 styles.borderColor,
                 styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
                 styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
