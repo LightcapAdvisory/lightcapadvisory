@@ -11,6 +11,7 @@ type SectionProps = React.PropsWithChildren<{
     backgroundSize?: 'full' | 'inset';
     styles?: any;
     backgroundImage?: string | StaticImageData;
+    surface?: 'none' | 'glass' | 'solid';
 }>;
 
 export default function Section(props: SectionProps) {
@@ -18,40 +19,38 @@ export default function Section(props: SectionProps) {
     return backgroundSize === 'inset' ? <SectionInset {...rest} /> : <SectionFullWidth {...rest} />;
 }
 
-function resolveBackgroundImage(bg?: string | StaticImageData) {
-    if (!bg) return undefined;
-    return typeof bg === 'string' ? bg : bg.src;
-}
+/* -------------------------------------------------------------------------- */
+/*                               INSET SECTION                                */
+/* -------------------------------------------------------------------------- */
 
 function SectionInset(props: SectionProps) {
-    const { elementId, colors = 'colors-f', styles = {}, children, backgroundImage } = props;
-    const bgUrl = resolveBackgroundImage(backgroundImage);
+    const {
+        elementId,
+        colors = 'colors-f',
+        styles = {},
+        children,
+        surface = 'none'
+    } = props;
 
     return (
         <div
             id={elementId || undefined}
             className={classNames('flex justify-center', styles.margin)}
-            style={{
-                borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined,
-                backgroundImage: bgUrl ? `url('${bgUrl}')` : undefined,
-                backgroundSize: 'contain',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
-            }}
             data-theme={colors}
         >
             <div
                 className={classNames(
-                    'flex flex-col items-center justify-center relative w-full bg-transparent',
+                    'flex flex-col items-center justify-center relative w-full',
                     mapStyles({ width: styles.width ?? 'wide' }),
-                    mapStyles({ height: styles.height ?? 'screen' }), // default to full viewport
-                    styles.padding ?? 'py-24 px-6', // larger padding for hero
+                    mapStyles({ height: styles.height ?? 'auto' }),
+                    styles.padding ?? 'py-24 px-6',
                     styles.borderColor,
                     styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
-                    styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
+                    styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null,
+                    surfaceClasses(surface)
                 )}
                 style={{
-                    borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined
+                    borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined,
                 }}
             >
                 {children}
@@ -60,34 +59,61 @@ function SectionInset(props: SectionProps) {
     );
 }
 
+/* -------------------------------------------------------------------------- */
+/*                             FULL WIDTH SECTION                              */
+/* -------------------------------------------------------------------------- */
+
 function SectionFullWidth(props: SectionProps) {
-    const { elementId, colors = 'colors-f', styles = {}, children, backgroundImage } = props;
-    const bgUrl = resolveBackgroundImage(backgroundImage);
+    const { elementId, colors = 'colors-f', styles = {}, children, surface = 'none' } = props;
 
     return (
-        <div
+        <section
             id={elementId || undefined}
             data-theme={colors}
             className={classNames(
-                'flex flex-col justify-center items-center relative bg-cover bg-center',
-                mapStyles({ height: styles.height ?? 'screen' }), // default full viewport
+                'relative w-full flex justify-center',
+                // remove height styling here to avoid shrinking
                 styles.margin,
-                styles.padding ?? 'py-24 px-6', // larger padding for hero
-                styles.borderColor,
-                styles.borderStyle ? mapStyles({ borderStyle: styles.borderStyle }) : null,
-                styles.borderRadius ? mapStyles({ borderRadius: styles.borderRadius }) : null
+                styles.padding ?? 'py-24 px-0' // vertical padding only
             )}
-            style={{
-                borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined,
-                backgroundImage: bgUrl ? `url('${bgUrl}')` : undefined
-            }}
         >
-            {/* Optional overlay */}
-            {bgUrl && <div className="absolute inset-0 bg-black bg-opacity-40 pointer-events-none"></div>}
-
-            <div className={classNames('w-full relative z-10', mapStyles({ width: styles.width ?? 'wide' }))}>
-                {children}
+            {/* Glass band spans full width */}
+            <div
+                className={classNames(
+                    'w-full',
+                    surface === 'glass'
+                        ? 'bg-white/5 backdrop-blur-xl border-t border-b border-white/20 shadow-none'
+                        : '',
+                    surface === 'solid' ? 'bg-black/80' : ''
+                )}
+            >
+                {/* Inner content container: centered text only */}
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16">
+                    {children}
+                </div>
             </div>
-        </div>
+        </section>
     );
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               SURFACE STYLES                                */
+/* -------------------------------------------------------------------------- */
+
+function surfaceClasses(surface: 'none' | 'glass' | 'solid') {
+    switch (surface) {
+        case 'glass':
+            return classNames(
+                'bg-white/5',            // frosted glass
+                'backdrop-blur-xl',       // blur
+                'shadow-[0_20px_50px_rgba(0,0,0,0.35)]', // soft depth
+                'border-t border-b border-white/30'    // top & bottom separators
+            );
+        case 'solid':
+            return 'bg-black/80';
+        default:
+            return null;
+    }
 }

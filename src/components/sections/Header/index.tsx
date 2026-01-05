@@ -12,7 +12,7 @@ export default function Header(props) {
     const { isSticky, styles = {}, ...rest } = props;
     const headerWidth = styles.self?.width ?? 'narrow';
     return (
-        <header className={classNames(isSticky ? 'sticky top-0 z-10' : 'relative', 'border-b border-current')}>
+        <header className={classNames(isSticky ? 'sticky top-0 z-10' : 'relative')}>
             <div
                 className={classNames({
                     'max-w-7xl mx-auto xl:border-x xl:border-current': headerWidth === 'narrow',
@@ -29,6 +29,7 @@ export default function Header(props) {
     );
 }
 
+
 function HeaderVariants(props) {
     const { headerVariant = 'variant-a', ...rest } = props;
     switch (headerVariant) {
@@ -42,69 +43,97 @@ function HeaderVariants(props) {
 }
 
 function HeaderVariantA(props) {
-    const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
+    const { socialLinks = [], ...logoProps } = props;
+
+    // Only keep LinkedIn for now
+    const linkedInLink = socialLinks.find((link) => link.title === 'LinkedIn');
+
     return (
-        <div className="relative flex items-stretch">
+        <div
+            className={classNames(
+                'relative flex items-center justify-between w-full py-4 px-6',
+                'bg-white/5 backdrop-blur-xl',       // frosted glass
+                'border-b border-white/10',          // subtle bottom line
+                'shadow-none'                        // remove heavy shadow
+            )}
+        >
             <SiteLogoLink {...logoProps} />
-            {primaryLinks.length > 0 && (
-                <ul className="hidden border-r border-current divide-x divide-current lg:flex">
-                    <ListOfLinks links={primaryLinks} inMobileMenu={false} />
+
+            {linkedInLink && (
+                <ul className="flex items-center ml-auto">
+                    <li>
+                        <Social
+                            {...linkedInLink}
+                            className="w-10 h-10 text-gray-200 hover:text-blue-500 transition-all"
+                        />
+                    </li>
                 </ul>
             )}
-            {socialLinks.length > 0 && (
-                <ul className="hidden ml-auto border-l border-current lg:flex">
-                    <ListOfSocialLinks links={socialLinks} inMobileMenu={false} />
-                </ul>
-            )}
-            {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
         </div>
     );
 }
 
+
+
+
 function HeaderVariantB(props) {
-    const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
+    const { socialLinks = [], ...logoProps } = props;
+
+    // Only keep LinkedIn for now
+    const linkedInLink = socialLinks.find((link) => link.title === 'LinkedIn');
+
     return (
-        <div className="relative flex items-stretch">
+        <div
+            className={classNames(
+                'relative flex items-center justify-between w-full py-4 px-6',
+                'bg-white/5 backdrop-blur-xl',       // frosted glass
+                'border-b border-white/10',          // subtle bottom line
+                'shadow-none'                        // remove heavy shadow
+            )}
+        >
             <SiteLogoLink {...logoProps} />
-            {primaryLinks.length > 0 && (
-                <ul className="hidden ml-auto border-l border-current divide-x divide-current lg:flex">
-                    <ListOfLinks links={primaryLinks} inMobileMenu={false} />
+
+            {linkedInLink && (
+                <ul className="flex items-center ml-auto">
+                    <li>
+                        <Social
+                            {...linkedInLink}
+                            className="w-10 h-10 text-gray-200 hover:text-blue-500 transition-all"
+                        />
+                    </li>
                 </ul>
             )}
-            {socialLinks.length > 0 && (
-                <ul
-                    className={classNames('hidden border-l border-current lg:flex', {
-                        'ml-auto': primaryLinks.length === 0
-                    })}
-                >
-                    <ListOfSocialLinks links={socialLinks} inMobileMenu={false} />
-                </ul>
-            )}
-            {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
         </div>
     );
 }
 
 function HeaderVariantC(props) {
-    const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
+    const { socialLinks = [], ...logoProps } = props;
+
+    // Only keep LinkedIn for now
+    const linkedInLink = socialLinks.find((link) => link.title === 'LinkedIn');
+
     return (
-        <div className="relative flex items-stretch">
+        <div
+            className={classNames(
+                'relative flex items-center justify-between w-full py-4 px-6',
+                'bg-white/5 backdrop-blur-xl',       // frosted glass
+                'border-b border-white/10',          // subtle bottom line
+                'shadow-none'                        // remove heavy shadow
+            )}
+        >
             <SiteLogoLink {...logoProps} />
-            {socialLinks.length > 0 && (
-                <ul className="hidden ml-auto border-l border-current lg:flex">
-                    <ListOfSocialLinks links={socialLinks} inMobileMenu={false} />
+
+            {linkedInLink && (
+                <ul className="flex items-center ml-auto">
+                    <li>
+                        <Social
+                            {...linkedInLink}
+                            className="w-10 h-10 text-gray-200 hover:text-blue-500 transition-all"
+                        />
+                    </li>
                 </ul>
             )}
-            {primaryLinks.length > 0 && (
-                <ul
-                    className={classNames('hidden border-l border-current divide-x divide-current lg:flex', {
-                        'ml-auto': primaryLinks.length === 0
-                    })}
-                >
-                    <ListOfLinks links={primaryLinks} inMobileMenu={false} />
-                </ul>
-            )}
-            {(primaryLinks.length > 0 || socialLinks.length > 0) && <MobileMenu {...props} />}
         </div>
     );
 }
@@ -169,18 +198,22 @@ function MobileMenu(props) {
 }
 
 function SiteLogoLink({ title, isTitleVisible, logo }) {
-    if (!(logo || (title && isTitleVisible))) {
-        return null;
-    }
+    if (!(logo || (title && isTitleVisible))) return null;
+
     return (
-        <div className="flex items-center border-r border-current">
-            <Link href="/" className="flex items-center h-full gap-2 p-4 link-fill">
-                {logo && <ImageBlock {...logo} className="max-h-12" />}
-                {title && isTitleVisible && <span className="text-base tracking-widest uppercase">{title}</span>}
+        <div className="flex items-center">
+            <Link href="/" className="flex items-center gap-4 p-2 h-full flex-shrink-0">
+                {logo && <ImageBlock {...logo} className="max-h-16 md:max-h-20 lg:max-h-24" />}
+                {title && isTitleVisible && (
+                    <span className="text-xl md:text-2xl tracking-widest uppercase font-semibold">
+                        {title}
+                    </span>
+                )}
             </Link>
         </div>
     );
 }
+
 
 function ListOfLinks({ links, inMobileMenu }) {
     return links.map((link, index) => (

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
 
 import Action from '@/components/atoms/Action';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
@@ -18,42 +19,93 @@ export default function FeaturedItemsSection(props) {
         spacingY = 16,
         styles = {}
     } = props;
+
     const sectionAlign = styles.self?.textAlign ?? 'left';
+
+    // Framer Motion variants for fade-in + slide-up
+    const fadeUpVariant = {
+        hidden: { opacity: 0, y: 40 }, // larger movement for visibility
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    };
+
     return (
-        <Section elementId={elementId} colors={colors} styles={styles.self}>
+        <Section
+            elementId={elementId}
+            colors={colors}
+            styles={styles.self}
+            surface="glass" // Apple-style glass
+        >
             {title && (
-                <h2 className={classNames('text-4xl sm:text-5xl', mapStyles({ textAlign: sectionAlign }))}>{title}</h2>
+                <motion.h2
+                    className={classNames(
+                        'text-4xl sm:text-5xl font-semibold',
+                        mapStyles({ textAlign: sectionAlign })
+                    )}
+                    variants={fadeUpVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.2 }}
+                    style={{ textShadow: '0 2px 6px rgba(255,255,255,0.3)' }} // light drop shadow
+                >
+                    {title}
+                </motion.h2>
             )}
+
             {subtitle && (
-                <p
-                    className={classNames('text-lg sm:text-xl', mapStyles({ textAlign: sectionAlign }), {
-                        'mt-6': title
-                    })}
+                <motion.p
+                    className={classNames(
+                        'text-lg sm:text-xl text-white/80',
+                        mapStyles({ textAlign: sectionAlign }),
+                        { 'mt-6': title }
+                    )}
+                    variants={fadeUpVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.2 }}
+                    style={{ textShadow: '0 1px 4px rgba(255,255,255,0.25)' }}
                 >
                     {subtitle}
-                </p>
+                </motion.p>
             )}
+
             {items.length > 0 && (
                 <div
-                    className={classNames('grid', mapColStyles(columns), {
-                        'mt-12': title || subtitle
-                    })}
+                    className={classNames(
+                        'grid',
+                        mapColStyles(columns),
+                        { 'mt-12': title || subtitle }
+                    )}
                     style={{
                         columnGap: spacingX ? `${spacingX}px` : null,
                         rowGap: spacingY ? `${spacingY}px` : null
                     }}
                 >
                     {items.map((item, index) => (
-                        <FeaturedItem key={index} {...item} headingLevel={title ? 'h3' : 'h2'} />
+                        <motion.div
+                            key={index}
+                            variants={fadeUpVariant}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.2 }}
+                        >
+                            <FeaturedItem
+                                {...item}
+                                headingLevel={title ? 'h3' : 'h2'}
+                            />
+                        </motion.div>
                     ))}
                 </div>
             )}
+
             {actions?.length > 0 && (
                 <div
-                    className={classNames('flex flex-wrap items-center gap-4 mt-10', {
-                        'justify-center': sectionAlign === 'center',
-                        'justify-end': sectionAlign === 'right'
-                    })}
+                    className={classNames(
+                        'flex flex-wrap items-center gap-4 mt-10',
+                        {
+                            'justify-center': sectionAlign === 'center',
+                            'justify-end': sectionAlign === 'right'
+                        }
+                    )}
                 >
                     {actions.map((action, index) => (
                         <Action key={index} {...action} />

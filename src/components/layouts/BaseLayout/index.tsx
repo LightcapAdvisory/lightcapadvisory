@@ -6,6 +6,8 @@ import Footer from '@/components/sections/Footer';
 import Header from '@/components/sections/Header';
 import { PageComponentProps } from '@/types';
 import { PageModelType } from '@/types/generated';
+import { resolveBackgroundImage } from '@/utils/resolveBackgroundImage';
+
 
 type BaseLayoutProps = React.PropsWithChildren & PageComponentProps & PageModelType;
 
@@ -15,7 +17,14 @@ const BaseLayout: React.FC<BaseLayoutProps> = (props) => {
 
     return (
         <div className="flex flex-col grow">
-            {page?.backgroundImage && <BackgroundImage {...page?.backgroundImage} />}
+            {page?.backgroundImage && (
+                <BackgroundImage
+                    {...page.backgroundImage}
+                    src={resolveBackgroundImage(page.backgroundImage)}
+                />
+            )}
+
+
             {site.header && (
                 <Annotated content={site}>
                     <Annotated content={site.header}>

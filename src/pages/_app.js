@@ -23,18 +23,15 @@ export default function MyApp({ Component, pageProps }) {
       `}</style>
 
       {isMounted ? (
-        <div
-          className="min-h-screen bg-cover bg-center bg-no-repeat relative"
-          style={{ backgroundImage: "url('/your-background.jpg')" }}
-        >
-          {/* Optional overlay for better text contrast */}
-          <div className="absolute inset-0 bg-black bg-opacity-20 z-0"></div>
-          
-          {/* Page content */}
-          <div className="relative z-10">
+        <>
+          {/* Global background image */}
+          <div
+            className="min-h-screen bg-cover bg-center bg-no-repeat relative"
+            style={{ backgroundImage: "url('/images/hero-background.jpg')" }}
+          >
             <Component {...pageProps} />
           </div>
-        </div>
+        </>
       ) : null}
     </>
   );

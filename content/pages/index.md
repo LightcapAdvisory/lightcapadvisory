@@ -6,12 +6,9 @@ sections:
   - elementId: ''
     colors: colors-f
     backgroundSize: full
-    title: Strategy to Execution — Product Leadership That Scales With You
+    title: Product strategy only matters if it drives results.
     subtitle: >-
-      Helping startups, scale-ups, and tech companies build and grow software
-      products that turn vision into actionable outcomes. We deliver strategy,
-      discovery, requirements, and fractional product leadership tailored to
-      your business needs.
+      I build data-driven product strategies and organizations that consistently deliver business results.
     styles:
       self:
         height: auto
@@ -31,25 +28,19 @@ sections:
     type: HeroSection
     actions: []
   - type: FeaturedItemsSection
-    title: Services
+    title: How I Help
+    subtitle: Lightcap Advisory partners with companies to turn product vision into execution. I help leadership teams define clear, data-driven product strategy - including target outcomes, strategic bets, and prioritization so execution drives real business results. 
     items:
       - type: FeaturedItem
-        title: Discovery & Requirements (Lite)
+        title: Product Strategy & Direction
         subtitle: ''
         text: >+
-          *   Short-term engagement to validate software product ideas and
-          capture essential requirements
+          I help leadership teams define clear, data-driven product strategy - including target outcomes, strategic bets, and prioritization so execution drives real business results.
 
-
-          <!---->
-
-
-          *   Ideal for startups or companies wanting quick insight without long
-          commitments
 
         featuredImage:
           type: ImageBlock
-          url: \images\requirements_icon.png
+          url: \images\compass.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -59,21 +50,16 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: Full Strategy + Discovery + Deep Requirements
+        title: Fractional Product Leadership
         subtitle: ''
         text: >+
-          *   Comprehensive product strategy, roadmaps, and detailed
-          requirements for scalable execution
+          I act as a senior product leader for your organization - partnering with executives, guiding product teams, and ensuring strategy turns into consistent execution and outcomes.
 
 
-          <!---->
-
-
-          *   Perfect for companies preparing major product initiatives
 
         featuredImage:
           type: ImageBlock
-          url: \images\strategy_icon.png
+          url: \images\king.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -83,22 +69,16 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: Strategy + Requirements + Fractional Product Leadership
+        title: Product Operating Model & Execution
         subtitle: ''
         text: >+
-          *   End-to-end software product guidance, including ongoing fractional
-          leadership and hands-on execution support
+          I help teams design and evolve product processes, decision frameworks, and metrics that enable faster execution, better alignment, and measurable ROI.
 
 
-          <!---->
-
-
-          *   For organizations needing both strategy and operational product
-          oversight
 
         featuredImage:
           type: ImageBlock
-          url: \images\leadership_partnership_icon.png
+          url: \images\gear_upward_trend.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -126,7 +106,7 @@ sections:
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
-    title: Let’s Talk About Your Product
+    title: Turn Strategy into Results
     form:
       type: FormBlock
       elementId: sign-up-form
@@ -166,7 +146,7 @@ sections:
           placeholder: Type your message / inquiry here
           width: full
           isRequired: false
-      submitLabel: Submit 🚀
+      submitLabel: SEND MESSAGE
       styles:
         self:
           textAlign: center
@@ -187,17 +167,8 @@ sections:
         flexDirection: row
         textAlign: left
     text: >
-      Ready to transform your software product strategy into actionable
-      outcomes? Contact Lightcap Advisory today to discuss how we can help you:
+       Email me to discuss how Lightcap Advisory can help you define strategy, lead execution, and deliver measurable business outcomes.
 
-
-      *   Validate and refine your product vision
-
-
-      *   Develop a clear roadmap and detailed requirements
-
-
-      *   Provide fractional product leadership tailored to your team’s needs
 backgroundImage:
   type: BackgroundImage
   backgroundSize: auto
