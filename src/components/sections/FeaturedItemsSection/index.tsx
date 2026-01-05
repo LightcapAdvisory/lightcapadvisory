@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
+import type { Easing, Variants } from 'framer-motion';
 
 import Action from '@/components/atoms/Action';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
@@ -23,9 +24,9 @@ export default function FeaturedItemsSection(props) {
     const sectionAlign = styles.self?.textAlign ?? 'left';
 
     // Framer Motion variants for fade-in + slide-up
-    const fadeUpVariant = {
+    const fadeUpVariant: Variants = {
         hidden: { opacity: 0, y: 40 }, // larger movement for visibility
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' satisfies Easing } }
     };
 
     return (
