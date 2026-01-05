@@ -19,8 +19,8 @@ sections:
           - ml-0
           - mr-0
         padding:
-          - pt-36
-          - pb-48
+          - pt-6
+          - pb-6
           - pl-4
           - pr-4
         flexDirection: row-reverse
@@ -29,7 +29,7 @@ sections:
     actions: []
   - type: FeaturedItemsSection
     title: How I Help
-    subtitle: Lightcap Advisory partners with companies to turn product vision into execution. I help leadership teams define clear, data-driven product strategy - including target outcomes, strategic bets, and prioritization so execution drives real business results. 
+    subtitle: Lightcap Advisory partners with companies to turn product vision into execution. I help leadership teams define clear, data-driven product strategy - including target outcomes, strategic bets, and prioritization so execution drives real business results.
     items:
       - type: FeaturedItem
         title: Product Strategy & Direction
@@ -98,8 +98,8 @@ sections:
         height: auto
         width: narrow
         padding:
-          - pt-28
-          - pb-36
+          - pt-6
+          - pb-6
           - pl-4
           - pr-4
         textAlign: left
@@ -160,14 +160,14 @@ sections:
           - ml-0
           - mr-0
         padding:
-          - pt-24
-          - pb-24
+          - pt-6
+          - pb-6
           - pr-4
           - pl-4
         flexDirection: row
         textAlign: left
     text: >
-       Email me to discuss how Lightcap Advisory can help you define strategy, lead execution, and deliver measurable business outcomes.
+      Email me to discuss how Lightcap Advisory can help you define strategy, lead execution, and deliver measurable business outcomes.
 
 backgroundImage:
   type: BackgroundImage
