@@ -20,7 +20,7 @@ const BaseLayout: React.FC<BaseLayoutProps> = (props) => {
             {page?.backgroundImage && (
                 <BackgroundImage
                     {...page.backgroundImage}
-                    src={resolveBackgroundImage(page.backgroundImage)}
+                    src={resolveBackgroundImage(page.backgroundImage.url)}
                 />
             )}
 
