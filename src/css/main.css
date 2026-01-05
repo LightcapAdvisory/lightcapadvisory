@@ -7,7 +7,6 @@
 
 body {
     font-family: var(--font-primary);
-    background-image: url('/hero-background.jpg');
     /* path relative to /public */
     background-size: cover;
     /* makes it fill the viewport */
