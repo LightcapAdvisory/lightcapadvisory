@@ -6,9 +6,9 @@ sections:
   - elementId: ''
     colors: colors-f
     backgroundSize: full
-    title: Product strategy only matters if it drives results.
+    title: Turn product strategy and AI into measurable business results.
     subtitle: >-
-      I build data-driven product strategies and organizations that consistently deliver business results.
+      Fractional product leadership for founders and executives.
     styles:
       self:
         height: auto
@@ -27,17 +27,16 @@ sections:
         textAlign: left
     type: HeroSection
     actions: []
+
   - type: FeaturedItemsSection
     title: How I Help
-    subtitle: Lightcap Advisory partners with companies to turn product vision into execution. I help leadership teams define clear, data-driven product strategy - including target outcomes, strategic bets, and prioritization so execution drives real business results.
+    subtitle: Lightcap Advisory partners with founders and leadership teams to create clarity where it’s missing — and execution where it matters. I combine product leadership with practical AI to help organizations gain focus, move faster, and deliver measurable outcomes.
     items:
       - type: FeaturedItem
-        title: Product Strategy & Direction
+        title: From unclear direction → focused product strategy
         subtitle: ''
         text: >+
-          I help leadership teams define clear, data-driven product strategy - including target outcomes, strategic bets, and prioritization so execution drives real business results.
-
-
+          Define clear outcomes, strategic bets, and priorities so teams stop guessing and start executing.
         featuredImage:
           type: ImageBlock
           url: \images\compass.png
@@ -50,13 +49,10 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: Fractional Product Leadership
+        title: From fragmented teams → confident product leadership
         subtitle: ''
         text: >+
-          I act as a senior product leader for your organization - partnering with executives, guiding product teams, and ensuring strategy turns into consistent execution and outcomes.
-
-
-
+          I step in as a fractional product leader to align stakeholders, guide teams, and drive consistent delivery.
         featuredImage:
           type: ImageBlock
           url: \images\king.png
@@ -69,13 +65,10 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: Product Operating Model & Execution
+        title: From slow execution → scalable operating rhythm
         subtitle: ''
         text: >+
-          I help teams design and evolve product processes, decision frameworks, and metrics that enable faster execution, better alignment, and measurable ROI.
-
-
-
+          Build product operating models, decision frameworks, and metrics that accelerate execution and improve ROI.
         featuredImage:
           type: ImageBlock
           url: \images\gear_upward_trend.png
@@ -103,6 +96,68 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
+
+  - type: FeaturedItemsSection
+    title: Who I Work With
+    subtitle: 'I typically partner with:'
+    items:
+      - type: FeaturedItem
+        title: ''
+        subtitle: ''
+        text: |
+          - Founders preparing for their next phase of growth
+          - Executive teams struggling to turn product plans into execution
+          - Organizations without senior product leadership
+          - Teams exploring AI but unsure where to start
+          - Companies ready to move beyond strategy decks into shipped results
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+    colors: colors-f
+    columns: 1
+    spacingX: 16
+    spacingY: 16
+    elementId: ''
+    styles:
+      self:
+        height: auto
+        width: narrow
+        padding:
+          - pt-6
+          - pb-6
+          - pl-4
+          - pr-4
+        textAlign: left
+
+  - type: FeaturedItemsSection
+    title: How We Work Together
+    subtitle: ''
+    items:
+      - type: MarkdownBlock
+        text: |
+          - **Advisory & Discovery** – Short-term clarity and strategic direction
+          - **Fractional Product Leadership** – Embedded leadership to drive execution
+          - **Strategy Sprints** – Focused engagements around product or AI priorities
+    actions: []
+    colors: colors-f
+    columns: 1
+    spacingX: 16
+    spacingY: 16
+    elementId: ''
+    styles:
+      self:
+        height: auto
+        width: narrow
+        padding:
+          - pt-6
+          - pb-6
+          - pl-4
+          - pr-4
+        textAlign: left
+
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
