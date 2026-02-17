@@ -156,7 +156,7 @@ sections:
           self:
             textAlign: left
     colors: colors-f
-    columns: 1
+    columns: 2
     spacingX: 16
     spacingY: 16
     elementId: ''
@@ -174,14 +174,42 @@ sections:
     title: How We Work Together
     subtitle: ''
     items:
-      - type: MarkdownBlock
+      - type: FeaturedItem
+        title: 'Advisory & Discovery'
+        subtitle: ''
         text: |
-          - **Advisory & Discovery** – Short-term clarity and strategic direction
-          - **Fractional Product Leadership** – Embedded leadership to drive execution
-          - **Strategy Sprints** – Focused engagements around product or AI priorities
+          Short-term clarity and strategic direction
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: 'Fractional Product Leadership'
+        subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
+        text: |
+          Embedded leadership to drive execution
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: 'Strategy Sprints'
+        subtitle: 'ORGANIZATIONS WITHOUT SENIOR PRODUCT LEADERSHIP'
+        text: |
+          Focused engagements around product or AI priorities
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
     actions: []
-    colors: colors-f
-    columns: 1
+    colors: colors-b
+    columns: 3
     spacingX: 16
     spacingY: 16
     elementId: ''

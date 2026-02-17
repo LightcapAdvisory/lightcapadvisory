@@ -24,13 +24,7 @@ export default function Section(props: SectionProps) {
 /* -------------------------------------------------------------------------- */
 
 function SectionInset(props: SectionProps) {
-    const {
-        elementId,
-        colors = 'colors-f',
-        styles = {},
-        children,
-        surface = 'none'
-    } = props;
+    const { elementId, colors = 'colors-f', styles = {}, children, surface = 'none' } = props;
 
     return (
         <div
@@ -50,7 +44,7 @@ function SectionInset(props: SectionProps) {
                     surfaceClasses(surface)
                 )}
                 style={{
-                    borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined,
+                    borderWidth: styles.borderWidth ? `${styles.borderWidth}px` : undefined
                 }}
             >
                 {children}
@@ -81,22 +75,16 @@ function SectionFullWidth(props: SectionProps) {
             <div
                 className={classNames(
                     'w-full',
-                    surface === 'glass'
-                        ? 'bg-white/5 backdrop-blur-xl border-t border-b border-white/20 shadow-none'
-                        : '',
+                    surface === 'glass' ? 'backdrop-blur-xl border-t border-b border-white/20 shadow-none' : '',
                     surface === 'solid' ? 'bg-black/80' : ''
                 )}
             >
                 {/* Inner content container: centered text only */}
-                <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16">
-                    {children}
-                </div>
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-16">{children}</div>
             </div>
         </section>
     );
 }
-
-
 
 /* -------------------------------------------------------------------------- */
 /*                               SURFACE STYLES                                */
@@ -106,10 +94,10 @@ function surfaceClasses(surface: 'none' | 'glass' | 'solid') {
     switch (surface) {
         case 'glass':
             return classNames(
-                'bg-white/5',            // frosted glass
-                'backdrop-blur-xl',       // blur
+                'bg-white/5', // frosted glass
+                'backdrop-blur-xl', // blur
                 'shadow-[0_20px_50px_rgba(0,0,0,0.35)]', // soft depth
-                'border-t border-b border-white/30'    // top & bottom separators
+                'border-t border-b border-white/30' // top & bottom separators
             );
         case 'solid':
             return 'bg-black/80';
