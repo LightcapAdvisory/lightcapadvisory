@@ -55,7 +55,7 @@ export default function FeaturedItemsSection(props) {
             {subtitle && (
                 <motion.p
                     className={classNames(
-                        'text-lg sm:text-xl text-white/80',
+                        'text-lg sm:text-xl ',
                         mapStyles({ textAlign: sectionAlign }),
                         { 'mt-6': title }
                     )}

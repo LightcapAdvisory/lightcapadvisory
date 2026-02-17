@@ -33,13 +33,13 @@ sections:
     subtitle: Lightcap Advisory partners with founders and leadership teams to create clarity where it’s missing — and execution where it matters. I combine product leadership with practical AI to help organizations gain focus, move faster, and deliver measurable outcomes.
     items:
       - type: FeaturedItem
-        title: From unclear direction → focused product strategy
+        title: From unclear direction → :focused product strategy
         subtitle: ''
         text: >+
           Define clear outcomes, strategic bets, and priorities so teams stop guessing and start executing.
         featuredImage:
           type: ImageBlock
-          url: \images\compass.png
+          url: \images\compass_black.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -49,13 +49,13 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: From fragmented teams → confident product leadership
+        title: From fragmented teams → :confident product leadership
         subtitle: ''
         text: >+
           I step in as a fractional product leader to align stakeholders, guide teams, and drive consistent delivery.
         featuredImage:
           type: ImageBlock
-          url: \images\king.png
+          url: \images\king_black2.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -65,13 +65,13 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: From slow execution → scalable operating rhythm
+        title: From slow execution → :scalable operating rhythm
         subtitle: ''
         text: >+
           Build product operating models, decision frameworks, and metrics that accelerate execution and improve ROI.
         featuredImage:
           type: ImageBlock
-          url: \images\gear_upward_trend.png
+          url: \images\gear_upward_trend_black2.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -81,7 +81,7 @@ sections:
           self:
             textAlign: left
     actions: []
-    colors: colors-f
+    colors: colors-b
     columns: 1
     spacingX: 16
     spacingY: 16
@@ -96,7 +96,6 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
-
   - type: FeaturedItemsSection
     title: Who I Work With
     subtitle: ''
@@ -171,7 +170,6 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
-
   - type: FeaturedItemsSection
     title: How We Work Together
     subtitle: ''
