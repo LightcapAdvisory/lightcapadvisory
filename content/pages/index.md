@@ -161,7 +161,7 @@ sections:
   - type: ContactSection
     colors: colors-f
     backgroundSize: full
-    title: Turn Strategy into Results
+    title: Clarity. Execution. Results.
     form:
       type: FormBlock
       elementId: sign-up-form
@@ -222,7 +222,7 @@ sections:
         flexDirection: row
         textAlign: left
     text: >
-      Email me to discuss how Lightcap Advisory can help you define strategy, lead execution, and deliver measurable business outcomes.
+      Email me to explore how Lightcap Advisory can help you define the right strategy, drive execution, and achieve measurable results.
 
 backgroundImage:
   type: BackgroundImage
