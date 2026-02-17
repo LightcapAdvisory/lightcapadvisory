@@ -6,7 +6,7 @@ sections:
   - elementId: ''
     colors: colors-f
     backgroundSize: full
-    title: Turn product strategy and AI into measurable business
+    title: Turn product strategy and AI into measurable business :Results
     subtitle: >-
       Fractional product leadership for founders and executives.
     styles:
