@@ -31,12 +31,13 @@ export default function Component(props: HeroSection) {
             backgroundImage={backgroundImage}
         >
             <div className="flex flex-col lg:flex-row items-center gap-12">
-
                 {/* LEFT — TEXT */}
                 <div className={classNames('w-full lg:w-1/2', mapStyles({ textAlign: sectionAlign }))}>
                     {title && (
                         <AnnotatedField path=".title">
-                            <h1 className="text-5xl sm:text-6xl font-semibold">{title}</h1>
+                            <h1 className="text-5xl sm:text-6xl font-semibold">
+                                {title} <span style={{ color: '#00A8FF' }}>RESULTS</span>.
+                            </h1>
                         </AnnotatedField>
                     )}
 
