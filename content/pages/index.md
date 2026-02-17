@@ -99,17 +99,57 @@ sections:
 
   - type: FeaturedItemsSection
     title: Who I Work With
-    subtitle: 'I typically partner with:'
+    subtitle: ''
     items:
       - type: FeaturedItem
-        title: ''
-        subtitle: ''
+        title: '01'
+        subtitle: 'FOUNDERS PREPARING FOR THEIR NEXT PHASE OF GROWTH'
         text: |
-          - Founders preparing for their next phase of growth
-          - Executive teams struggling to turn product plans into execution
-          - Organizations without senior product leadership
-          - Teams exploring AI but unsure where to start
-          - Companies ready to move beyond strategy decks into shipped results
+          Moving from momentum to scalable execution.
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: '02'
+        subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
+        text: |
+          Bridging strategy and delivery.
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: '03'
+        subtitle: 'ORGANIZATIONS WITHOUT SENIOR PRODUCT LEADERSHIP'
+        text: |
+          Providing experienced guidance when you don’t yet need a full-time hire.
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: '04'
+        subtitle: 'TEAMS EXPLORING AI BUT UNSURE WHERE TO START'
+        text: |
+          Identifying real opportunities beyond the hype.
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: '05'
+        subtitle: 'COMPANIES READY TO MOVE PAST STRATEGY DECKS INTO SHIPPED RESULTS'
+        text: |
+          Turning direction into tangible outcomes.
         featuredImage: {}
         actions: []
         elementId: ''
