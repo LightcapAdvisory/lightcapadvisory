@@ -29,7 +29,6 @@ export default function Header(props) {
     );
 }
 
-
 function HeaderVariants(props) {
     const { headerVariant = 'variant-a', ...rest } = props;
     switch (headerVariant) {
@@ -52,9 +51,9 @@ function HeaderVariantA(props) {
         <div
             className={classNames(
                 'relative flex items-center justify-between w-full py-4 px-6',
-                'bg-white/5 backdrop-blur-xl',       // frosted glass
-                'border-b border-white/10',          // subtle bottom line
-                'shadow-none'                        // remove heavy shadow
+
+                'border-b border-white/10', // subtle bottom line
+                'shadow-none' // remove heavy shadow
             )}
         >
             <SiteLogoLink {...logoProps} />
@@ -73,9 +72,6 @@ function HeaderVariantA(props) {
     );
 }
 
-
-
-
 function HeaderVariantB(props) {
     const { socialLinks = [], ...logoProps } = props;
 
@@ -86,9 +82,9 @@ function HeaderVariantB(props) {
         <div
             className={classNames(
                 'relative flex items-center justify-between w-full py-4 px-6',
-                'bg-white/5 backdrop-blur-xl',       // frosted glass
-                'border-b border-white/10',          // subtle bottom line
-                'shadow-none'                        // remove heavy shadow
+
+                'border-b border-white/10', // subtle bottom line
+                'shadow-none' // remove heavy shadow
             )}
         >
             <SiteLogoLink {...logoProps} />
@@ -117,9 +113,9 @@ function HeaderVariantC(props) {
         <div
             className={classNames(
                 'relative flex items-center justify-between w-full py-4 px-6',
-                'bg-white/5 backdrop-blur-xl',       // frosted glass
-                'border-b border-white/10',          // subtle bottom line
-                'shadow-none'                        // remove heavy shadow
+
+                'border-b border-white/10', // subtle bottom line
+                'shadow-none' // remove heavy shadow
             )}
         >
             <SiteLogoLink {...logoProps} />
@@ -205,15 +201,12 @@ function SiteLogoLink({ title, isTitleVisible, logo }) {
             <Link href="/" className="flex items-center gap-4 p-2 h-full flex-shrink-0">
                 {logo && <ImageBlock {...logo} className="max-h-16 md:max-h-20 lg:max-h-24" />}
                 {title && isTitleVisible && (
-                    <span className="text-xl md:text-2xl tracking-widest uppercase font-semibold">
-                        {title}
-                    </span>
+                    <span className="text-xl md:text-2xl tracking-widest uppercase font-semibold">{title}</span>
                 )}
             </Link>
         </div>
     );
 }
-
 
 function ListOfLinks({ links, inMobileMenu }) {
     return links.map((link, index) => (
