@@ -78,7 +78,7 @@ export default function Component(props: HeroSection) {
                             playsInline
                             poster="/images/video-placeholder.jpg"
                         >
-                            <source src="/videos/hero-placeholder.mp4" type="video/mp4" />
+                            <source src="/videos/Lightcap_Advisory_Hero_Video.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
