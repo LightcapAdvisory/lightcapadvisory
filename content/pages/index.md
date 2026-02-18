@@ -227,7 +227,6 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
-        border: none
   - type: ContactSection
     colors: colors-f
     backgroundSize: full

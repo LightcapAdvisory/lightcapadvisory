@@ -42,7 +42,7 @@ export default function Action(props) {
 
     return (
         <Annotated content={props}>
-            {url?.length === 0 ? (
+            {url ? (
                 <Link
                     href={url}
                     aria-label={altText}
