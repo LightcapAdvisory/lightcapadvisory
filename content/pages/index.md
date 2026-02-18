@@ -8,7 +8,7 @@ sections:
     backgroundSize: full
     title: Turn product strategy and AI into measurable business :Results
     subtitle: >-
-      Fractional product leadership for founders and executives.
+      Fractional product leadership for founders and executives
     styles:
       self:
         height: auto
@@ -178,7 +178,8 @@ sections:
         title: 'Advisory & Discovery'
         subtitle: ''
         text: |
-          Short-term clarity and strategic direction. Focused engagements to help you define product priorities, uncover opportunities, and align stakeholders. Ideal for teams needing quick clarity on strategy, positioning, or where AI can create real impact.
+          Short-term clarity and strategic direction. 
+          Focused engagements to define product priorities, uncover opportunities, and align stakeholders. Ideal for teams needing fast clarity on strategy, positioning, or where AI can create real business impact.
         featuredImage: {}
         actions: []
         elementId: ''
@@ -189,7 +190,8 @@ sections:
         title: 'Fractional Product Leadership'
         subtitle: ''
         text: |
-          Embedded leadership to drive execution. I step in as a senior product leader, partnering closely with executives and teams to translate strategy into action, improve delivery, and build sustainable product momentum, without the commitment of a full-time hire.
+          Embedded leadership to drive execution. 
+          I step in as a senior product leader, partnering with executives and teams to translate strategy into action, improve delivery, and build sustainable product momentum — without the commitment of a full-time hire.
         featuredImage: {}
         actions: []
         elementId: ''
@@ -200,7 +202,8 @@ sections:
         title: 'Strategy Sprints'
         subtitle: ''
         text: |
-          Focused engagements around product or AI priorities. Time-boxed, outcome-driven sessions designed to tackle specific challenges such as product direction, AI use cases, or execution roadblocks; delivering actionable plans and clear next steps.
+          Focused engagements around product or AI priorities. 
+          Time-boxed sessions designed to tackle specific challenges like product direction, AI use cases, or execution roadblocks — delivering actionable plans and clear next steps.
         featuredImage: {}
         actions: []
         elementId: ''
