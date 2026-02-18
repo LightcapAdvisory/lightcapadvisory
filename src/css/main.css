@@ -16,12 +16,6 @@ body {
     /* optional: makes it stay on scroll */
 }
 
-
-/* Make all sections transparent so the page background shows */
-[data-theme] {
-    background-color: transparent !important;
-}
-
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 

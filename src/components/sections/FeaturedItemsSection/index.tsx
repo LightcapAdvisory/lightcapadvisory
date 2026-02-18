@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
 import type { Easing, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import Action from '@/components/atoms/Action';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
@@ -38,10 +38,7 @@ export default function FeaturedItemsSection(props) {
         >
             {title && (
                 <motion.h2
-                    className={classNames(
-                        'text-4xl sm:text-5xl font-semibold',
-                        mapStyles({ textAlign: sectionAlign })
-                    )}
+                    className={classNames('text-4xl sm:text-5xl font-semibold', mapStyles({ textAlign: sectionAlign }))}
                     variants={fadeUpVariant}
                     initial="hidden"
                     whileInView="visible"
@@ -54,11 +51,9 @@ export default function FeaturedItemsSection(props) {
 
             {subtitle && (
                 <motion.p
-                    className={classNames(
-                        'text-lg sm:text-xl text-white/80',
-                        mapStyles({ textAlign: sectionAlign }),
-                        { 'mt-6': title }
-                    )}
+                    className={classNames('text-lg sm:text-xl text-black/80', mapStyles({ textAlign: sectionAlign }), {
+                        'mt-6': title
+                    })}
                     variants={fadeUpVariant}
                     initial="hidden"
                     whileInView="visible"
@@ -71,11 +66,7 @@ export default function FeaturedItemsSection(props) {
 
             {items.length > 0 && (
                 <div
-                    className={classNames(
-                        'grid',
-                        mapColStyles(columns),
-                        { 'mt-12': title || subtitle }
-                    )}
+                    className={classNames('grid', mapColStyles(columns), { 'mt-12': title || subtitle })}
                     style={{
                         columnGap: spacingX ? `${spacingX}px` : null,
                         rowGap: spacingY ? `${spacingY}px` : null
@@ -89,10 +80,7 @@ export default function FeaturedItemsSection(props) {
                             whileInView="visible"
                             viewport={{ once: false, amount: 0.2 }}
                         >
-                            <FeaturedItem
-                                {...item}
-                                headingLevel={title ? 'h3' : 'h2'}
-                            />
+                            <FeaturedItem {...item} headingLevel={title ? 'h3' : 'h2'} />
                         </motion.div>
                     ))}
                 </div>
@@ -100,13 +88,10 @@ export default function FeaturedItemsSection(props) {
 
             {actions?.length > 0 && (
                 <div
-                    className={classNames(
-                        'flex flex-wrap items-center gap-4 mt-10',
-                        {
-                            'justify-center': sectionAlign === 'center',
-                            'justify-end': sectionAlign === 'right'
-                        }
-                    )}
+                    className={classNames('flex flex-wrap items-center gap-4 mt-10', {
+                        'justify-center': sectionAlign === 'center',
+                        'justify-end': sectionAlign === 'right'
+                    })}
                 >
                     {actions.map((action, index) => (
                         <Action key={index} {...action} />

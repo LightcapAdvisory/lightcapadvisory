@@ -6,7 +6,7 @@ sections:
   - elementId: ''
     colors: colors-f
     backgroundSize: full
-    title: Turn product strategy and AI into measurable business
+    title: Turn product strategy and AI into measurable business :Results
     subtitle: >-
       Fractional product leadership for founders and executives.
     styles:
@@ -33,13 +33,13 @@ sections:
     subtitle: Lightcap Advisory partners with founders and leadership teams to create clarity where it’s missing — and execution where it matters. I combine product leadership with practical AI to help organizations gain focus, move faster, and deliver measurable outcomes.
     items:
       - type: FeaturedItem
-        title: From unclear direction → focused product strategy
+        title: From unclear direction → :focused product strategy
         subtitle: ''
         text: >+
           Define clear outcomes, strategic bets, and priorities so teams stop guessing and start executing.
         featuredImage:
           type: ImageBlock
-          url: \images\compass.png
+          url: \images\compass_black.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -49,13 +49,13 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: From fragmented teams → confident product leadership
+        title: From fragmented teams → :confident product leadership
         subtitle: ''
         text: >+
           I step in as a fractional product leader to align stakeholders, guide teams, and drive consistent delivery.
         featuredImage:
           type: ImageBlock
-          url: \images\king.png
+          url: \images\king_black2.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -65,13 +65,13 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: From slow execution → scalable operating rhythm
+        title: From slow execution → :scalable operating rhythm
         subtitle: ''
         text: >+
           Build product operating models, decision frameworks, and metrics that accelerate execution and improve ROI.
         featuredImage:
           type: ImageBlock
-          url: \images\gear_upward_trend.png
+          url: \images\gear_upward_trend_black2.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -81,7 +81,7 @@ sections:
           self:
             textAlign: left
     actions: []
-    colors: colors-f
+    colors: colors-b
     columns: 1
     spacingX: 16
     spacingY: 16
@@ -96,7 +96,6 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
-
   - type: FeaturedItemsSection
     title: Who I Work With
     subtitle: ''
@@ -157,7 +156,7 @@ sections:
           self:
             textAlign: left
     colors: colors-f
-    columns: 1
+    columns: 2
     spacingX: 16
     spacingY: 16
     elementId: ''
@@ -171,19 +170,46 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
-
   - type: FeaturedItemsSection
     title: How We Work Together
     subtitle: ''
     items:
-      - type: MarkdownBlock
+      - type: FeaturedItem
+        title: 'Advisory & Discovery'
+        subtitle: ''
         text: |
-          - **Advisory & Discovery** – Short-term clarity and strategic direction
-          - **Fractional Product Leadership** – Embedded leadership to drive execution
-          - **Strategy Sprints** – Focused engagements around product or AI priorities
+          Short-term clarity and strategic direction
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: 'Fractional Product Leadership'
+        subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
+        text: |
+          Embedded leadership to drive execution
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+      - type: FeaturedItem
+        title: 'Strategy Sprints'
+        subtitle: 'ORGANIZATIONS WITHOUT SENIOR PRODUCT LEADERSHIP'
+        text: |
+          Focused engagements around product or AI priorities
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
     actions: []
-    colors: colors-f
-    columns: 1
+    colors: colors-b
+    columns: 3
     spacingX: 16
     spacingY: 16
     elementId: ''
