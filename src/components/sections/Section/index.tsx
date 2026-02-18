@@ -75,7 +75,7 @@ function SectionFullWidth(props: SectionProps) {
             <div
                 className={classNames(
                     'w-full',
-                    surface === 'glass' ? 'backdrop-blur-xl border-t border-b border-white/20 shadow-none' : '',
+                    surface === 'glass' ? 'backdrop-blur-xl shadow-none' : '',
                     surface === 'solid' ? 'bg-black/80' : ''
                 )}
             >

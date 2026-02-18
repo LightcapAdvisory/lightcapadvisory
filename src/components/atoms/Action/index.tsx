@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import { Annotated } from '@/components/Annotated';
 import { iconMap } from '@/components/svgs';
+import { useRef } from 'react';
 import Link from '../Link';
 
 export default function Action(props) {
@@ -19,6 +20,15 @@ export default function Action(props) {
     } = props;
     const IconComponent = icon ? iconMap[icon] : null;
 
+    const bottomRef = useRef(null);
+
+    const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight, // gets the full height of the page
+            behavior: 'smooth' // for a smooth scrolling effect
+        });
+    };
+
     const baseClasses = [
         'relative inline-flex items-center justify-center gap-1.5 text-center text-lg leading-tight no-underline transition lg:whitespace-nowrap'
     ];
@@ -32,15 +42,32 @@ export default function Action(props) {
 
     return (
         <Annotated content={props}>
-            <Link href={url} aria-label={altText} id={elementId || null} className={classNames(baseClasses, className)}>
-                {showIcon && IconComponent && iconPosition === 'left' && (
-                    <IconComponent className="fill-current h-icon w-icon" />
-                )}
-                {label}
-                {showIcon && IconComponent && iconPosition === 'right' && (
-                    <IconComponent className="fill-current h-icon w-icon" />
-                )}
-            </Link>
+            {url?.length === 0 ? (
+                <Link
+                    href={url}
+                    aria-label={altText}
+                    id={elementId || null}
+                    className={classNames(baseClasses, className)}
+                >
+                    {showIcon && IconComponent && iconPosition === 'left' && (
+                        <IconComponent className="fill-current h-icon w-icon" />
+                    )}
+                    {label}
+                    {showIcon && IconComponent && iconPosition === 'right' && (
+                        <IconComponent className="fill-current h-icon w-icon" />
+                    )}
+                </Link>
+            ) : (
+                <div style={{ color: '#00A8FF', textAlign: 'center' }}>
+                    <button
+                        onClick={scrollToBottom}
+                        className="inline-flex items-center justify-center px-5 py-4 text-lg transition border-2 hover:-translate-y-1.5"
+                        style={{ color: '#00A8FF' }}
+                    >
+                        {label}
+                    </button>
+                </div>
+            )}
         </Annotated>
     );
 }

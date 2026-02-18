@@ -21,6 +21,7 @@ export default function ContactSection(props) {
                     {text && (
                         <Markdown
                             options={{ forceBlock: true, forceWrapper: true }}
+                            style={{ opacity: '80%' }}
                             className={classNames(
                                 'max-w-none prose sm:prose-lg',
                                 mapStyles({ textAlign: sectionAlign }),
