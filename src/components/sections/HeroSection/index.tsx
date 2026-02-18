@@ -36,7 +36,7 @@ export default function Component(props: HeroSection) {
                     {title && (
                         <AnnotatedField path=".title">
                             <h1 className="text-5xl sm:text-6xl font-semibold">
-                                {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]}</span>.
+                                {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]}</span>
                             </h1>
                         </AnnotatedField>
                     )}
@@ -61,7 +61,7 @@ export default function Component(props: HeroSection) {
                     )}
 
                     {actions.length > 0 && (
-                        <div className="flex flex-wrap gap-4 mt-8">
+                        <div className="flex flex-wrap gap-4 mt-8" style={{ color: '#00A8FF' }}>
                             {actions.map((action, index) => (
                                 <Action key={index} {...action} />
                             ))}

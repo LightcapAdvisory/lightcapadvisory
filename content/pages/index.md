@@ -26,8 +26,9 @@ sections:
         flexDirection: row-reverse
         textAlign: left
     type: HeroSection
-    actions: []
-
+    actions:
+      - type: Button
+        label: LET'S TALK RESULTS
   - type: FeaturedItemsSection
     title: How I Help
     subtitle: Lightcap Advisory partners with founders and leadership teams to create clarity where it’s missing, and execution where it matters. I combine product leadership with practical AI to help organizations gain focus, move faster, and deliver measurable outcomes.
@@ -101,7 +102,7 @@ sections:
     subtitle: ''
     items:
       - type: FeaturedItem
-        title: '01'
+        title: ':01'
         subtitle: 'FOUNDERS PREPARING FOR THEIR NEXT PHASE OF GROWTH'
         text: |
           Moving from momentum to scalable execution.
@@ -112,7 +113,7 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: '02'
+        title: ':02'
         subtitle: 'TEAMS EXPLORING AI BUT UNSURE WHERE TO START'
         text: |
           Identifying real opportunities beyond the hype.
@@ -123,7 +124,7 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: '03'
+        title: ':03'
         subtitle: 'ORGANIZATIONS WITHOUT SENIOR PRODUCT LEADERSHIP'
         text: |
           Providing experienced guidance when you don’t yet need a full-time hire.
@@ -134,7 +135,7 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: '04'
+        title: ':04'
         subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
         text: |
           Bridging strategy and delivery.
@@ -145,7 +146,7 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: '05'
+        title: ':05'
         subtitle: 'COMPANIES READY TO MOVE PAST STRATEGY DECKS INTO SHIPPED RESULTS'
         text: |
           Turning direction into tangible outcomes.
@@ -226,7 +227,6 @@ sections:
           - pl-4
           - pr-4
         textAlign: left
-
   - type: ContactSection
     colors: colors-f
     backgroundSize: full

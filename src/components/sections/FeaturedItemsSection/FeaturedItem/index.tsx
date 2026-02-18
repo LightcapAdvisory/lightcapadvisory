@@ -37,6 +37,7 @@ export default function FeaturedItem(props) {
                         {text && (
                             <Markdown
                                 options={{ forceBlock: true, forceWrapper: true }}
+                                style={{ opacity: '80%' }}
                                 className={classNames(' sm:prose-lg', {
                                     'mt-2': title || subtitle
                                 })}
