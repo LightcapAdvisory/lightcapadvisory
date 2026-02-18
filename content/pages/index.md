@@ -113,9 +113,9 @@ sections:
             textAlign: left
       - type: FeaturedItem
         title: '02'
-        subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
+        subtitle: 'TEAMS EXPLORING AI BUT UNSURE WHERE TO START'
         text: |
-          Bridging strategy and delivery.
+          Identifying real opportunities beyond the hype.
         featuredImage: {}
         actions: []
         elementId: ''
@@ -135,9 +135,9 @@ sections:
             textAlign: left
       - type: FeaturedItem
         title: '04'
-        subtitle: 'TEAMS EXPLORING AI BUT UNSURE WHERE TO START'
+        subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
         text: |
-          Identifying real opportunities beyond the hype.
+          Bridging strategy and delivery.
         featuredImage: {}
         actions: []
         elementId: ''
