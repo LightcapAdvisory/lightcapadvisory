@@ -30,7 +30,7 @@ sections:
 
   - type: FeaturedItemsSection
     title: How I Help
-    subtitle: Lightcap Advisory partners with founders and leadership teams to create clarity where it’s missing — and execution where it matters. I combine product leadership with practical AI to help organizations gain focus, move faster, and deliver measurable outcomes.
+    subtitle: Lightcap Advisory partners with founders and leadership teams to create clarity where it’s missing, and execution where it matters. I combine product leadership with practical AI to help organizations gain focus, move faster, and deliver measurable outcomes.
     items:
       - type: FeaturedItem
         title: From unclear direction → :focused product strategy
@@ -178,7 +178,7 @@ sections:
         title: 'Advisory & Discovery'
         subtitle: ''
         text: |
-          Short-term clarity and strategic direction
+          Short-term clarity and strategic direction. Focused engagements to help you define product priorities, uncover opportunities, and align stakeholders. Ideal for teams needing quick clarity on strategy, positioning, or where AI can create real impact.
         featuredImage: {}
         actions: []
         elementId: ''
@@ -187,9 +187,9 @@ sections:
             textAlign: left
       - type: FeaturedItem
         title: 'Fractional Product Leadership'
-        subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
+        subtitle: ''
         text: |
-          Embedded leadership to drive execution
+          Embedded leadership to drive execution. I step in as a senior product leader, partnering closely with executives and teams to translate strategy into action, improve delivery, and build sustainable product momentum, without the commitment of a full-time hire.
         featuredImage: {}
         actions: []
         elementId: ''
@@ -198,9 +198,9 @@ sections:
             textAlign: left
       - type: FeaturedItem
         title: 'Strategy Sprints'
-        subtitle: 'ORGANIZATIONS WITHOUT SENIOR PRODUCT LEADERSHIP'
+        subtitle: ''
         text: |
-          Focused engagements around product or AI priorities
+          Focused engagements around product or AI priorities. Time-boxed, outcome-driven sessions designed to tackle specific challenges such as product direction, AI use cases, or execution roadblocks; delivering actionable plans and clear next steps.
         featuredImage: {}
         actions: []
         elementId: ''
