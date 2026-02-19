@@ -30,12 +30,7 @@ export default function FeaturedItemsSection(props) {
     };
 
     return (
-        <Section
-            elementId={elementId}
-            colors={colors}
-            styles={styles.self}
-            surface="glass" // Apple-style glass
-        >
+        <Section elementId={elementId} colors={colors} styles={styles.self}>
             {title && (
                 <motion.h2
                     className={classNames('text-4xl sm:text-5xl font-semibold', mapStyles({ textAlign: sectionAlign }))}
