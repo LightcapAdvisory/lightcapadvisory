@@ -76,7 +76,7 @@ export default function Component(props: HeroSection) {
                             className="w-full h-full object-contain"
                             controls
                             playsInline
-                            poster="/images/video-placeholder.jpg"
+                            poster="/images/video-placeholder2.jpg"
                         >
                             <source src="/videos/Lightcap_Advisory_Hero_Video.mp4" type="video/mp4" />
                         </video>
