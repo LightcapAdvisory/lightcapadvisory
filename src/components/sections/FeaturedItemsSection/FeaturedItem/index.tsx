@@ -7,7 +7,7 @@ import ImageBlock from '@/components/molecules/ImageBlock';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 
 export default function FeaturedItem(props) {
-    const { elementId, title, subtitle, text, featuredImage, actions = [], styles = {}, headingLevel } = props;
+    const { elementId, eyebrow, title, subtitle, text, featuredImage, actions = [], styles = {}, headingLevel } = props;
     const { self = {} } = styles;
     const { borderWidth, ...otherSelfStyles } = self;
     const TitleTag = headingLevel;
@@ -28,6 +28,16 @@ export default function FeaturedItem(props) {
                         </div>
                     )}
                     <div>
+                        {/* EYEBROW */}
+                        {eyebrow && (
+                            <div
+                                className="text-sm font-semibold tracking-wider uppercase mb-1"
+                                style={{ color: '#00A8FF' }}
+                            >
+                                {eyebrow}
+                            </div>
+                        )}
+
                         {title && (
                             <TitleTag className="text-2xl sm:text-3xl font-semibold">
                                 {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]} </span>

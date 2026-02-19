@@ -8,7 +8,7 @@ sections:
     backgroundSize: full
     title: Turn product strategy and AI into measurable business :Results
     subtitle: >-
-      Fractional product leadership for founders and executives
+      Fractional leadership for founders and executives
     styles:
       self:
         height: auto
@@ -176,6 +176,7 @@ sections:
     subtitle: ''
     items:
       - type: FeaturedItem
+        eyebrow: CLARITY
         title: 'Advisory & Discovery'
         subtitle: ''
         text: |
@@ -188,18 +189,7 @@ sections:
           self:
             textAlign: left
       - type: FeaturedItem
-        title: 'Fractional Product Leadership'
-        subtitle: ''
-        text: |
-          Embedded leadership to drive execution. 
-          I step in as a senior product leader, partnering with executives and teams to translate strategy into action, improve delivery, and build sustainable product momentum — without the commitment of a full-time hire.
-        featuredImage: {}
-        actions: []
-        elementId: ''
-        styles:
-          self:
-            textAlign: left
-      - type: FeaturedItem
+        eyebrow: EXECUTION
         title: 'Strategy Sprints'
         subtitle: ''
         text: |
@@ -211,7 +201,20 @@ sections:
         styles:
           self:
             textAlign: left
-    actions: []
+      - type: FeaturedItem
+        eyebrow: LEADERSHIP
+        title: 'Fractional Leadership'
+        subtitle: ''
+        text: |
+          Embedded leadership to drive execution. 
+          I step in as a senior product leader, partnering with executives and teams to translate strategy into action, improve delivery, and build sustainable product momentum — without the commitment of a full-time hire.
+        featuredImage: {}
+        actions: []
+        elementId: ''
+        styles:
+          self:
+            textAlign: left
+          actions: []
     colors: colors-b
     columns: 3
     spacingX: 16
@@ -220,7 +223,7 @@ sections:
     styles:
       self:
         height: auto
-        width: narrow
+        width: full
         padding:
           - pt-6
           - pb-6
