@@ -48,6 +48,13 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
+            padding:
+              - pt-0
+              - pb-0
+              - pl-4
+              - pr-4
             textAlign: left
       - type: FeaturedItem
         title: From fragmented teams → :confident product leadership
@@ -64,6 +71,13 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
+            padding:
+              - pt-6
+              - pb-6
+              - pl-4
+              - pr-4
             textAlign: left
       - type: FeaturedItem
         title: From slow execution → :scalable operating rhythm
@@ -80,6 +94,8 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
             textAlign: left
     actions: []
     colors: colors-b
@@ -102,8 +118,8 @@ sections:
     subtitle: ''
     items:
       - type: FeaturedItem
-        title: ':01'
-        subtitle: 'FOUNDERS PREPARING FOR THEIR NEXT PHASE OF GROWTH'
+        number: '01'
+        title: 'FOUNDERS PREPARING FOR THEIR NEXT PHASE OF GROWTH'
         text: |
           Moving from momentum to scalable execution.
         featuredImage: {}
@@ -111,10 +127,17 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
+            padding:
+              - pt-12 # top padding
+              - pb-12 # bottom padding
+              - pl-4 # left padding
+              - pr-4 # right padding
             textAlign: left
       - type: FeaturedItem
-        title: ':02'
-        subtitle: 'TEAMS EXPLORING AI BUT UNSURE WHERE TO START'
+        number: '02'
+        title: 'TEAMS EXPLORING AI BUT UNSURE WHERE TO START'
         text: |
           Identifying real opportunities beyond the hype.
         featuredImage: {}
@@ -122,10 +145,17 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
+            padding:
+              - pt-12 # top padding
+              - pb-12 # bottom padding
+              - pl-4 # left padding
+              - pr-4 # right padding
             textAlign: left
       - type: FeaturedItem
-        title: ':03'
-        subtitle: 'ORGANIZATIONS WITHOUT SENIOR PRODUCT LEADERSHIP'
+        number: '03'
+        title: 'ORGANIZATIONS WITHOUT SENIOR PRODUCT LEADERSHIP'
         text: |
           Providing experienced guidance when you don’t yet need a full-time hire.
         featuredImage: {}
@@ -133,10 +163,17 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
+            padding:
+              - pt-6 # top padding
+              - pb-12 # bottom padding
+              - pl-4 # left padding
+              - pr-4 # right padding
             textAlign: left
       - type: FeaturedItem
-        title: ':04'
-        subtitle: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
+        number: '04'
+        title: 'EXECUTIVE TEAMS STRUGGLING TO TURN PRODUCT PLANS INTO ACTION'
         text: |
           Bridging strategy and delivery.
         featuredImage: {}
@@ -144,10 +181,17 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
+            padding:
+              - pt-6 # top padding
+              - pb-12 # bottom padding
+              - pl-4 # left padding
+              - pr-4 # right padding
             textAlign: left
       - type: FeaturedItem
-        title: ':05'
-        subtitle: 'COMPANIES READY TO MOVE PAST STRATEGY DECKS INTO SHIPPED RESULTS'
+        number: '05'
+        title: 'COMPANIES READY TO MOVE PAST STRATEGY DECKS INTO SHIPPED RESULTS'
         text: |
           Turning direction into tangible outcomes.
         featuredImage: {}
@@ -155,16 +199,22 @@ sections:
         elementId: ''
         styles:
           self:
+            height: auto
+            width: full
+            padding:
+              - pt-6 # top padding
+              - pb-0 # bottom padding
+              - pl-4 # left padding
+              - pr-4 # right padding
             textAlign: left
     colors: colors-f
     columns: 2
-    spacingX: 16
+    spacingX: 64
     spacingY: 16
-    elementId: ''
     styles:
       self:
         height: auto
-        width: narrow
+        width: full
         padding:
           - pt-6
           - pb-6
@@ -214,7 +264,7 @@ sections:
         styles:
           self:
             textAlign: left
-          actions: []
+    actions: []
     colors: colors-b
     columns: 3
     spacingX: 16

@@ -2,12 +2,22 @@ import classNames from 'classnames';
 import Markdown from 'markdown-to-jsx';
 
 import { Annotated } from '@/components/Annotated';
-import Action from '@/components/atoms/Action';
-import ImageBlock from '@/components/molecules/ImageBlock';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 
 export default function FeaturedItem(props) {
-    const { elementId, eyebrow, title, subtitle, text, featuredImage, actions = [], styles = {}, headingLevel } = props;
+    const {
+        elementId,
+        eyebrow,
+        title,
+        subtitle,
+        text,
+        number, // <-- use this for 01, 02, etc.
+        featuredImage,
+        actions = [],
+        styles = {},
+        headingLevel
+    } = props;
+
     const { self = {} } = styles;
     const { borderWidth, ...otherSelfStyles } = self;
     const TitleTag = headingLevel;
@@ -16,59 +26,58 @@ export default function FeaturedItem(props) {
         <Annotated content={props}>
             <article
                 id={elementId || null}
-                className={classNames('overflow-hidden', mapStyles(otherSelfStyles))}
+                className={classNames('relative', mapStyles(otherSelfStyles))} // remove overflow-hidden
                 style={{
-                    borderWidth: borderWidth ? `${borderWidth}px` : null
+                    borderWidth: borderWidth ? `${borderWidth}px` : null,
+                    paddingLeft: '1rem'
                 }}
             >
-                <div className="flex items-start mb-6">
-                    {featuredImage && (
-                        <div className="flex-shrink-0 mr-4">
-                            <ImageBlock {...featuredImage} className="w-12 h-12 md:w-16 md:h-16" />
+                <div className="relative z-10">
+                    {/* Number behind the content */}
+                    {number && (
+                        <span
+                            className="absolute select-none pointer-events-none"
+                            style={{
+                                color: '#00A8FF',
+                                fontSize: 'clamp(3rem, 8vw, 10rem)',
+                                fontWeight: 'bold',
+                                top: '-6rem',
+                                left: '-6.5rem',
+                                zIndex: 0,
+                                opacity: 0.5
+                            }}
+                        >
+                            {number}
+                        </span>
+                    )}
+
+                    {/* Now your eyebrow, title, subtitle, text */}
+                    {eyebrow && (
+                        <div
+                            className="text-sm font-semibold tracking-wider uppercase mb-1"
+                            style={{ color: '#00A8FF', zIndex: 10 }}
+                        >
+                            {eyebrow}
                         </div>
                     )}
-                    <div>
-                        {/* EYEBROW */}
-                        {eyebrow && (
-                            <div
-                                className="text-sm font-semibold tracking-wider uppercase mb-1"
-                                style={{ color: '#00A8FF' }}
-                            >
-                                {eyebrow}
-                            </div>
-                        )}
 
-                        {title && (
-                            <TitleTag className="text-2xl sm:text-3xl font-semibold">
-                                {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]} </span>
-                            </TitleTag>
-                        )}
-                        {subtitle && <p className={classNames('text-lg', { 'mt-1': title })}>{subtitle}</p>}
-                        {text && (
-                            <Markdown
-                                options={{ forceBlock: true, forceWrapper: true }}
-                                style={{ opacity: '80%' }}
-                                className={classNames(' sm:prose-lg', {
-                                    'mt-2': title || subtitle
-                                })}
-                            >
-                                {text}
-                            </Markdown>
-                        )}
-                        {actions?.length > 0 && (
-                            <div
-                                className={classNames('flex flex-wrap items-center gap-4', {
-                                    'justify-center': otherSelfStyles.textAlign === 'center',
-                                    'justify-end': otherSelfStyles.textAlign === 'right',
-                                    'mt-4': title || subtitle || text
-                                })}
-                            >
-                                {actions.map((action, index) => (
-                                    <Action key={index} {...action} />
-                                ))}
-                            </div>
-                        )}
-                    </div>
+                    {title && (
+                        <TitleTag className="text-2xl sm:text-3xl font-semibold relative z-10">
+                            {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]} </span>
+                        </TitleTag>
+                    )}
+
+                    {subtitle && <p className="text-lg relative z-10 mt-1">{subtitle}</p>}
+
+                    {text && (
+                        <Markdown
+                            options={{ forceBlock: true, forceWrapper: true }}
+                            style={{ opacity: '80%', position: 'relative', zIndex: 10 }}
+                            className="sm:prose-lg mt-2"
+                        >
+                            {text}
+                        </Markdown>
+                    )}
                 </div>
             </article>
         </Annotated>
