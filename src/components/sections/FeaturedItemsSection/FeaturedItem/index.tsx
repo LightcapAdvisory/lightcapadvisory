@@ -26,58 +26,42 @@ export default function FeaturedItem(props) {
         <Annotated content={props}>
             <article
                 id={elementId || null}
-                className={classNames('relative', mapStyles(otherSelfStyles))} // remove overflow-hidden
+                className={classNames('relative', mapStyles(otherSelfStyles))}
                 style={{
                     borderWidth: borderWidth ? `${borderWidth}px` : null,
                     paddingLeft: '1rem'
                 }}
             >
+                {/* Content container */}
                 <div className="relative z-10">
-                    {/* Number behind the content */}
-                    {number && (
-                        <span
-                            className="absolute select-none pointer-events-none number-behind"
-                            style={{
-                                color: '#00A8FF',
-                                /* fontSize: 'clamp(3rem, 8vw, 10rem)', // keeps responsive scaling */
-                                fontWeight: 'bold',
-                                /* top: '-6rem', // desktop offset */
-                                /* left: '-6.5rem', // desktop offset */
-                                zIndex: 0
-                                /*  opacity: 0.5 */
-                            }}
-                        >
-                            {number}
-                        </span>
-                    )}
+                    <div className="number-anchor">
+                        {number && <span className="number-behind">{number}</span>}
 
-                    {/* Now your eyebrow, title, subtitle, text */}
-                    {eyebrow && (
-                        <div
-                            className="text-sm font-semibold tracking-wider uppercase mb-1"
-                            style={{ color: '#00A8FF', zIndex: 10 }}
-                        >
-                            {eyebrow}
-                        </div>
-                    )}
+                        {/* eyebrow, title, subtitle, text */}
+                        {eyebrow && (
+                            <div className="text-sm font-semibold tracking-wider uppercase mb-1 featured-eyebrow">
+                                {eyebrow}
+                            </div>
+                        )}
 
-                    {title && (
-                        <TitleTag className="text-2xl sm:text-3xl font-semibold relative z-10">
-                            {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]} </span>
-                        </TitleTag>
-                    )}
+                        {title && (
+                            <TitleTag className="text-2xl sm:text-3xl font-semibold relative z-10">
+                                {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]}</span>
+                            </TitleTag>
+                        )}
 
-                    {subtitle && <p className="text-lg relative z-10 mt-1">{subtitle}</p>}
+                        {subtitle && <p className="text-lg relative z-10 mt-1">{subtitle}</p>}
 
-                    {text && (
-                        <Markdown
-                            options={{ forceBlock: true, forceWrapper: true }}
-                            style={{ opacity: '80%', position: 'relative', zIndex: 10 }}
-                            className="sm:prose-lg mt-2"
-                        >
-                            {text}
-                        </Markdown>
-                    )}
+                        {text && (
+                            <Markdown
+                                options={{ forceBlock: true, forceWrapper: true }}
+                                className="sm:prose-lg mt-2 relative z-10"
+                                style={{ opacity: '80%' }}
+                            >
+                                {text}
+                            </Markdown>
+                        )}
+                    </div>
                 </div>
             </article>
         </Annotated>
