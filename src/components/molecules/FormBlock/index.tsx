@@ -18,7 +18,10 @@ export default function FormBlock(props) {
 
         const data = new FormData(formRef.current);
         const value = Object.fromEntries(data.entries());
-        alert(`Form data: ${JSON.stringify(value)}`);
+        const subject = encodeURIComponent('Form Submission from Lightcap Advisory');
+        const body = value.messageInquiry;
+        const from = value.email;
+        window.location.href = `mailto:josh@lightcapadvisory.com?subject=${subject}&body=${body}${from ? `&from=${encodeURIComponent(`${from}`)}` : ''}`;
     }
 
     return (
