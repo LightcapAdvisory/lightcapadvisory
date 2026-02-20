@@ -200,7 +200,7 @@ body {
     .number-behind {
         font-size: clamp(3rem, 12vw, 7rem);
         top: -4rem;
-        left: -4.5rem;
+        left: -3rem;
         opacity: 0.5;
     }
 }
@@ -209,7 +209,7 @@ body {
     .number-behind {
         font-size: clamp(2.5rem, 16vw, 5rem);
         top: -3.25rem;
-        left: -4rem;
+        left: -2.25rem;
         opacity: 0.5;
     }
 }
