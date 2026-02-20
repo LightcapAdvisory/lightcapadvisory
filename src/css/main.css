@@ -175,6 +175,30 @@ body {
     }
 }
 
+/* FeaturedItem number overlay */
+.number-behind {
+  transition: all 0.2s ease;
+}
+
+/* Adjust number for smaller screens */
+@media (max-width: 768px) {
+  .number-behind {
+    top: -3rem;    /* moves number slightly down */
+    left: -2rem;   /* moves number slightly right */
+    font-size: clamp(2rem, 15vw, 6rem); /* scales for mobile */
+    opacity: 0.4;  /* slightly lighter on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .number-behind {
+    top: -2rem;
+    left: -1rem;
+    font-size: clamp(1.5rem, 20vw, 5rem);
+    opacity: 0.35;
+  }
+}
+
 @utility bottom-shadow-* {
     box-shadow: 0 calc(--value(integer) * 1px) 0 0 currentColor;
 }

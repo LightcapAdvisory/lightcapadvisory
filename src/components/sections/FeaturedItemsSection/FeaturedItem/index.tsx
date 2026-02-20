@@ -36,13 +36,13 @@ export default function FeaturedItem(props) {
                     {/* Number behind the content */}
                     {number && (
                         <span
-                            className="absolute select-none pointer-events-none"
+                            className="absolute select-none pointer-events-none number-behind"
                             style={{
                                 color: '#00A8FF',
-                                fontSize: 'clamp(3rem, 8vw, 10rem)',
+                                fontSize: 'clamp(3rem, 8vw, 10rem)', // keeps responsive scaling
                                 fontWeight: 'bold',
-                                top: '-6rem',
-                                left: '-6.5rem',
+                                top: '-6rem', // desktop offset
+                                left: '-6.5rem', // desktop offset
                                 zIndex: 0,
                                 opacity: 0.5
                             }}
