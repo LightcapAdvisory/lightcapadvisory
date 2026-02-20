@@ -57,13 +57,13 @@ sections:
               - pr-4
             textAlign: left
       - type: FeaturedItem
-        title: From fragmented teams → :confident product leadership
+        title: From slow execution → :scalable operating rhythm
         subtitle: ''
         text: >+
-          I step in as a fractional product leader to align stakeholders, guide teams, and drive consistent delivery.
+          Build product operating models, decision frameworks, and metrics that accelerate execution and improve ROI.
         featuredImage:
           type: ImageBlock
-          url: \images\king_black2.png
+          url: \images\gear_upward_trend_black2.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
@@ -80,13 +80,13 @@ sections:
               - pr-4
             textAlign: left
       - type: FeaturedItem
-        title: From slow execution → :scalable operating rhythm
+        title: From fragmented teams → :confident product leadership
         subtitle: ''
         text: >+
-          Build product operating models, decision frameworks, and metrics that accelerate execution and improve ROI.
+          I step in as a fractional product leader to align stakeholders, guide teams, and drive consistent delivery.
         featuredImage:
           type: ImageBlock
-          url: \images\gear_upward_trend_black2.png
+          url: \images\king_black2.png
           altText: Item image
           caption: Caption of the image
           elementId: ''
