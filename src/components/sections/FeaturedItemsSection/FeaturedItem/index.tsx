@@ -39,12 +39,12 @@ export default function FeaturedItem(props) {
                             className="absolute select-none pointer-events-none number-behind"
                             style={{
                                 color: '#00A8FF',
-                                fontSize: 'clamp(3rem, 8vw, 10rem)', // keeps responsive scaling
+                                /* fontSize: 'clamp(3rem, 8vw, 10rem)', // keeps responsive scaling */
                                 fontWeight: 'bold',
-                                top: '-6rem', // desktop offset
-                                left: '-6.5rem', // desktop offset
-                                zIndex: 0,
-                                opacity: 0.5
+                                /* top: '-6rem', // desktop offset */
+                                /* left: '-6.5rem', // desktop offset */
+                                zIndex: 0
+                                /*  opacity: 0.5 */
                             }}
                         >
                             {number}

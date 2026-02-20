@@ -175,21 +175,31 @@ body {
     }
 }
 
-/* FeaturedItem number overlay */
+/* Desktop / default */
 .number-behind {
+  position: absolute;
+  font-weight: bold;
+  font-size: clamp(3rem, 8vw, 10rem); /* keeps responsive scaling */
+  top: -6rem;       /* desktop vertical offset */
+  left: -6.5rem;    /* desktop horizontal offset */
+  opacity: 0.5;     /* desktop transparency */
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
   transition: all 0.2s ease;
 }
 
-/* Adjust number for smaller screens */
+/* Tablet */
 @media (max-width: 768px) {
   .number-behind {
-    top: -3rem;    /* moves number slightly down */
-    left: -2rem;   /* moves number slightly right */
-    font-size: clamp(2rem, 15vw, 6rem); /* scales for mobile */
-    opacity: 0.4;  /* slightly lighter on small screens */
+    top: -3rem;
+    left: -2rem;
+    font-size: clamp(2rem, 15vw, 6rem);
+    opacity: 0.4;
   }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
   .number-behind {
     top: -2rem;
