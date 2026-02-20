@@ -209,7 +209,7 @@ body {
     .number-behind {
         font-size: clamp(2.5rem, 16vw, 5rem);
         top: -2.25rem;
-        left: -2.8rem;
+        left: -2.7rem;
         opacity: 0.5;
     }
 }
