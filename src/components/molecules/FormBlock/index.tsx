@@ -7,56 +7,55 @@ import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-
 
 export default function FormBlock(props) {
     const formRef = React.useRef<HTMLFormElement>(null);
-    const [statusMessage, setStatusMessage] = React.useState('');
-    const [statusColor, setStatusColor] = React.useState('#00A8FF'); // default accent color
     const { elementId, className, fields = [], submitLabel, styles = {} } = props;
 
-    if (fields.length === 0) {
-        return null;
-    }
+    const [status, setStatus] = React.useState('');
+    const [statusColor, setStatusColor] = React.useState('#00A8FF');
 
-    const handleSubmit = async (event: React.FormEvent) => {
+    function handleSubmit(event) {
         event.preventDefault();
+        const form = formRef.current;
+        if (!form) return;
 
-        if (!formRef.current) return;
+        // Serialize
+        const formData = new FormData(form);
+        const body = new URLSearchParams(formData as any).toString();
 
-        const data = new FormData(formRef.current);
-
-        try {
-            const response = await fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    'form-name': elementId || 'contact',
-                    ...Object.fromEntries(data.entries())
-                }).toString()
-            });
-
-            if (response.ok) {
-                setStatusMessage('Message sent successfully. I’ll be in touch soon.');
-                setStatusColor('#00A8FF'); // accent blue
-                formRef.current.reset();
-            } else {
-                setStatusMessage('Oops, something went wrong. Please try again.');
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body
+        })
+            .then((response) => {
+                if (response.ok) {
+                    setStatus('Message sent successfully. I&apos;ll be in touch soon.');
+                    setStatusColor('#00A8FF');
+                    form.reset();
+                } else {
+                    throw new Error('Failed to submit');
+                }
+            })
+            .catch(() => {
+                setStatus('Oops — something went wrong. Please try again.');
                 setStatusColor('red');
-            }
-        } catch (error) {
-            setStatusMessage('Oops, something went wrong. Please try again.');
-            setStatusColor('red');
-        }
-    };
+            });
+    }
 
     return (
         <Annotated content={props}>
+            {/* NETLIFY WILL DETECT THIS FORM AT BUILD TIME */}
             <form
-                className={className}
-                name={elementId || 'contact'}
-                id={elementId}
-                onSubmit={handleSubmit}
                 ref={formRef}
+                name={elementId || 'contact'}
+                id={elementId || 'contact'}
+                className={className}
+                method="POST"
+                action="/"
                 data-netlify="true"
+                netlify="true"
+                onSubmit={handleSubmit}
             >
-                {/* Hidden input for Netlify */}
+                {/* REQUIRED: Netlify form hidden field */}
                 <input type="hidden" name="form-name" value={elementId || 'contact'} />
 
                 <div className="grid gap-6 sm:grid-cols-2">
@@ -69,15 +68,16 @@ export default function FormBlock(props) {
                     <button
                         type="submit"
                         className="inline-flex items-center justify-center px-5 py-4 text-lg transition border-2 hover:-translate-y-1.5"
-                        style={{ color: '#00A8FF' }}
+                        style={{ color: '#00A8FF', borderColor: '#00A8FF' }}
                     >
                         {submitLabel}
                     </button>
                 </div>
 
-                {statusMessage && (
+                {status && (
                     <p className="mt-4 text-lg font-semibold" style={{ color: statusColor }}>
-                        {statusMessage}
+                        {/* This will render unescaped apostrophes in HTML */}
+                        <span dangerouslySetInnerHTML={{ __html: status }} />
                     </p>
                 )}
             </form>
