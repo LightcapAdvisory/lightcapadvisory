@@ -10,14 +10,13 @@ export default function FormBlock() {
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        // We explicitly post to the html file to ensure Netlify's bot picks it up
-        fetch('/form-check.html', {
+        // We use the URLSearchParams to ensure the body is properly encoded for Netlify
+        fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData as any).toString()
         })
             .then((response) => {
-                // Netlify returns a 200 even for spam, but a 404 means the form wasn't found
                 if (response.ok) {
                     setSubmitted(true);
                     setError(false);
@@ -33,19 +32,19 @@ export default function FormBlock() {
 
     return (
         <Annotated content={{}}>
-            {/* The styling is fixed by keeping the hidden inputs outside the main grid div */}
             <form
                 name="contact"
                 method="POST"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                className="max-w-2xl mx-auto p-4 w-full"
+                /* Added 'block w-full' to fix the collapsing issue caused by the <data> wrapper tag */
+                className="max-w-2xl mx-auto p-4 block w-full"
             >
                 <input type="hidden" name="form-name" value="contact" />
                 <input type="hidden" name="bot-field" />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full text-left">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                     <input
                         type="text"
                         name="firstName"
@@ -83,7 +82,7 @@ export default function FormBlock() {
                 <div className="mt-6 text-center">
                     <button
                         type="submit"
-                        className="inline-flex items-center justify-center px-6 py-3 text-lg text-white bg-blue-600 rounded hover:bg-blue-700 transition w-full sm:w-auto"
+                        className="inline-flex items-center justify-center px-6 py-3 text-lg text-white bg-blue-600 rounded hover:bg-blue-700 transition"
                     >
                         SEND MESSAGE
                     </button>
