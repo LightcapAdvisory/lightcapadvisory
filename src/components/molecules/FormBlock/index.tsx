@@ -10,13 +10,14 @@ export default function FormBlock() {
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        // Explicitly target the static HTML file in the public folder
+        // We explicitly post to the html file to ensure Netlify's bot picks it up
         fetch('/form-check.html', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData as any).toString()
         })
             .then((response) => {
+                // Netlify returns a 200 even for spam, but a 404 means the form wasn't found
                 if (response.ok) {
                     setSubmitted(true);
                     setError(false);
@@ -32,6 +33,7 @@ export default function FormBlock() {
 
     return (
         <Annotated content={{}}>
+            {/* The styling is fixed by keeping the hidden inputs outside the main grid div */}
             <form
                 name="contact"
                 method="POST"
@@ -40,9 +42,6 @@ export default function FormBlock() {
                 onSubmit={handleSubmit}
                 className="max-w-2xl mx-auto p-4 w-full"
             >
-                {/* Placement is key: These are NOT inside the Grid div. 
-                   This prevents them from breaking your layout.
-                */}
                 <input type="hidden" name="form-name" value="contact" />
                 <input type="hidden" name="bot-field" />
 
