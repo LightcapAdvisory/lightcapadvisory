@@ -90,7 +90,7 @@ export default function FormBlock(props) {
 
                 {isSubmitted && (
                     <div className="mt-8 text-lg font-medium" style={{ color: '#00A8FF' }}>
-                        Message sent successfully. I'll be in touch soon.
+                        Message sent successfully. I&apos;ll be in touch soon.
                     </div>
                 )}
 
