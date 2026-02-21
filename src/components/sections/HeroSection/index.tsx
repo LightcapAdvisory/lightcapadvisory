@@ -35,7 +35,7 @@ export default function Component(props: HeroSection) {
                 <div className={classNames('w-full lg:w-1/2', mapStyles({ textAlign: sectionAlign }))}>
                     {title && (
                         <AnnotatedField path=".title">
-                            <h1 className="text-5xl sm:text-6xl font-semibold">
+                            <h1 className="text-5xl sm:text-6xl font-semibold text-balance">
                                 {title.split(':')[0]} <span style={{ color: '#00A8FF' }}>{title.split(':')[1]}</span>
                             </h1>
                         </AnnotatedField>
