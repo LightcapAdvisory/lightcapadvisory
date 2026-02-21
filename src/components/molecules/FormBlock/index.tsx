@@ -1,100 +1,89 @@
 import { Annotated } from '@/components/Annotated';
-import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
-import classNames from 'classnames';
 import * as React from 'react';
 
 export default function FormBlock(props) {
-    const formRef = React.useRef<HTMLFormElement>(null);
-    const { elementId, className, fields = [], submitLabel, styles = {} } = props;
-
+    const { elementId, className, submitLabel = 'Send Message' } = props;
     const [status, setStatus] = React.useState('');
-    const [statusColor, setStatusColor] = React.useState('#00A8FF');
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const form = formRef.current;
-        if (!form) return;
-
+        const form = event.currentTarget;
         const formData = new FormData(form);
 
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(formData as any).toString()
+            body: new URLSearchParams(Object.fromEntries(formData.entries() as Iterable<[string, string]>)).toString()
         })
-            .then((response) => {
-                if (response.ok) {
-                    setStatus('Message sent successfully. I&apos;ll be in touch soon.');
-                    setStatusColor('#00A8FF');
+            .then((res) => {
+                if (res.ok) {
+                    setStatus('success');
                     form.reset();
                 } else {
-                    throw new Error('Failed to submit');
+                    setStatus('error');
                 }
             })
-            .catch(() => {
-                setStatus('Oops — something went wrong. Please try again.');
-                setStatusColor('red');
-            });
+            .catch(() => setStatus('error'));
     }
 
     return (
         <Annotated content={props}>
             <form
-                ref={formRef}
-                name={elementId || 'contact'}
-                id={elementId || 'contact'}
+                name="contact"
                 method="POST"
-                action="/"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
+                id={elementId}
                 className={className}
             >
-                {/* Hidden input required by Netlify */}
-                <input type="hidden" name="form-name" value={elementId || 'contact'} />
-                {/* Honeypot for spam protection */}
+                {/* Required hidden inputs for Netlify */}
+                <input type="hidden" name="form-name" value="contact" />
                 <p className="hidden">
                     <label>
-                        Don’t fill this out if you’re human: <input name="bot-field" />
+                        Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
                     </label>
                 </p>
 
-                <div className="grid gap-6 sm:grid-cols-2">
-                    {fields.map((field, index) => {
-                        const { name, type, placeholder, required } = field;
-                        return (
-                            <div key={index}>
-                                <label className="block text-sm font-medium mb-1" htmlFor={name}>
-                                    {placeholder}
-                                </label>
-                                <input
-                                    type={type || 'text'}
-                                    name={name}
-                                    id={name}
-                                    placeholder={placeholder}
-                                    required={!!required}
-                                    className="w-full border px-3 py-2 rounded"
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
+                {/* Form fields */}
+                <p>
+                    <label>
+                        Name
+                        <input type="text" name="name" required className="w-full px-4 py-3 border rounded-md" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Email
+                        <input type="email" name="email" required className="w-full px-4 py-3 border rounded-md" />
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Message
+                        <textarea
+                            name="messageInquiry"
+                            required
+                            className="w-full h-32 px-4 py-3 border rounded-md resize-none"
+                        ></textarea>
+                    </label>
+                </p>
 
-                <div className={classNames('mt-8', mapStyles({ textAlign: styles.self?.textAlign ?? 'left' }))}>
-                    <button
-                        type="submit"
-                        className="inline-flex items-center justify-center px-5 py-4 text-lg transition border-2 hover:-translate-y-1.5"
-                        style={{ color: '#00A8FF', borderColor: '#00A8FF' }}
-                    >
-                        {submitLabel}
-                    </button>
-                </div>
+                <button
+                    type="submit"
+                    className="mt-4 px-6 py-3 border-2 rounded-md text-white"
+                    style={{ backgroundColor: '#00A8FF' }}
+                >
+                    {submitLabel}
+                </button>
 
-                {status && (
-                    <p className="mt-4 text-lg font-semibold" style={{ color: statusColor }}>
-                        <span dangerouslySetInnerHTML={{ __html: status }} />
+                {/* Success/Error messages */}
+                {status === 'success' && (
+                    <p className="mt-2" style={{ color: '#00A8FF' }}>
+                        Message sent successfully. I&apos;ll be in touch soon.
                     </p>
                 )}
+                {status === 'error' && <p className="mt-2 text-red-500">There was an error submitting the form.</p>}
             </form>
         </Annotated>
     );
