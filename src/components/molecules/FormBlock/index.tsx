@@ -8,8 +8,6 @@ export default function FormBlock() {
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const form = event.currentTarget;
-
-        // Ensure we are capturing all fields, including the hidden form-name
         const data = new FormData(form);
 
         fetch('/', {
@@ -41,48 +39,48 @@ export default function FormBlock() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                className="max-w-2xl mx-auto p-4"
+                className="max-w-2xl mx-auto p-4 w-full"
             >
-                {/* Netlify hidden fields - placed outside the grid to avoid layout shifts */}
+                {/* Hidden fields placed outside the grid to prevent layout distortion */}
                 <input type="hidden" name="form-name" value="contact" />
                 <input type="hidden" name="bot-field" />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                     <input
                         type="text"
                         name="firstName"
                         placeholder="First Name"
                         required
-                        className="border border-gray-300 rounded px-3 py-2 w-full"
+                        className="border border-gray-300 rounded px-3 py-2 w-full block"
                     />
                     <input
                         type="text"
                         name="lastName"
                         placeholder="Last Name"
-                        className="border border-gray-300 rounded px-3 py-2 w-full"
+                        className="border border-gray-300 rounded px-3 py-2 w-full block"
                     />
                     <input
                         type="email"
                         name="email"
                         placeholder="Email"
                         required
-                        className="border border-gray-300 rounded px-3 py-2 w-full"
+                        className="border border-gray-300 rounded px-3 py-2 w-full block"
                     />
                     <input
                         type="text"
                         name="companyName"
                         placeholder="Company Name"
-                        className="border border-gray-300 rounded px-3 py-2 w-full"
+                        className="border border-gray-300 rounded px-3 py-2 w-full block"
                     />
                     <textarea
                         name="messageInquiry"
                         placeholder="Type your message / inquiry here"
                         rows={4}
-                        className="border border-gray-300 rounded px-3 py-2 w-full col-span-1 sm:col-span-2"
+                        className="border border-gray-300 rounded px-3 py-2 w-full block col-span-1 sm:col-span-2"
                     />
                 </div>
 
-                <div className="mt-6 text-center">
+                <div className="mt-6 text-center w-full">
                     <button
                         type="submit"
                         className="inline-flex items-center justify-center px-6 py-3 text-lg text-white bg-blue-600 rounded hover:bg-blue-700 transition"
