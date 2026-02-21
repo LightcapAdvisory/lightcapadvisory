@@ -54,6 +54,7 @@ export default function FormBlock(props) {
                 id={elementId}
                 onSubmit={handleSubmit}
                 ref={formRef}
+                netlify
                 data-netlify="true"
             >
                 {/* Hidden input for Netlify */}
