@@ -8,9 +8,10 @@ export default function FormBlock() {
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const form = event.currentTarget;
+
+        // Ensure we are capturing all fields, including the hidden form-name
         const data = new FormData(form);
 
-        // Netlify requires the 'form-name' to be included in the body of the POST request
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -42,17 +43,9 @@ export default function FormBlock() {
                 onSubmit={handleSubmit}
                 className="max-w-2xl mx-auto p-4"
             >
-                {/* IMPORTANT: This hidden input is vital for Netlify to associate 
-                  the submission with the correct form. 
-                */}
+                {/* Netlify hidden fields - placed outside the grid to avoid layout shifts */}
                 <input type="hidden" name="form-name" value="contact" />
-
-                {/* Honeypot field for spam protection */}
-                <p className="hidden" style={{ display: 'none' }}>
-                    <label>
-                        Don’t fill this out if you’re human: <input name="bot-field" />
-                    </label>
-                </p>
+                <input type="hidden" name="bot-field" />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
