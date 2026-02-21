@@ -6,95 +6,80 @@ import { DynamicComponent } from '@/components/components-registry';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
 
 export default function FormBlock(props) {
-    const formRef = React.createRef<HTMLFormElement>();
-
+    const formRef = React.useRef<HTMLFormElement>(null);
+    const [statusMessage, setStatusMessage] = React.useState('');
+    const [statusColor, setStatusColor] = React.useState('#00A8FF'); // default accent color
     const { elementId, className, fields = [], submitLabel, styles = {} } = props;
-
-    const [isSubmitting, setIsSubmitting] = React.useState(false);
-    const [isSubmitted, setIsSubmitted] = React.useState(false);
-    const [error, setError] = React.useState(null);
 
     if (fields.length === 0) {
         return null;
     }
 
-    async function handleSubmit(event) {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        setIsSubmitting(true);
-        setError(null);
+        if (!formRef.current) return;
 
-        const form = formRef.current;
-        const formData = new FormData(form);
+        const data = new FormData(formRef.current);
 
         try {
             const response = await fetch('/', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams(formData).toString()
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'form-name': elementId || 'contact',
+                    ...Object.fromEntries(data.entries())
+                }).toString()
             });
 
             if (response.ok) {
-                setIsSubmitted(true);
-                form.reset();
+                setStatusMessage('Message sent successfully. I’ll be in touch soon.');
+                setStatusColor('#00A8FF'); // accent blue
+                formRef.current.reset();
             } else {
-                throw new Error('Form submission failed');
+                setStatusMessage('Oops, something went wrong. Please try again.');
+                setStatusColor('red');
             }
-        } catch (err) {
-            setError('Something went wrong. Please try again.');
-        } finally {
-            setIsSubmitting(false);
+        } catch (error) {
+            setStatusMessage('Oops, something went wrong. Please try again.');
+            setStatusColor('red');
         }
-    }
+    };
 
     return (
         <Annotated content={props}>
             <form
-                name={elementId}
-                id={elementId}
-                ref={formRef}
                 className={className}
+                name={elementId || 'contact'}
+                id={elementId}
                 onSubmit={handleSubmit}
+                ref={formRef}
                 data-netlify="true"
-                netlify-honeypot="bot-field"
             >
-                {/* Required hidden inputs for Netlify */}
-                <input type="hidden" name="form-name" value={elementId} />
-                <input type="hidden" name="bot-field" />
+                {/* Hidden input for Netlify */}
+                <input type="hidden" name="form-name" value={elementId || 'contact'} />
 
-                {!isSubmitted && (
-                    <>
-                        <div className="grid gap-6 sm:grid-cols-2">
-                            {fields.map((field, index) => (
-                                <DynamicComponent key={index} {...field} />
-                            ))}
-                        </div>
+                <div className="grid gap-6 sm:grid-cols-2">
+                    {fields.map((field, index) => (
+                        <DynamicComponent key={index} {...field} />
+                    ))}
+                </div>
 
-                        <div className={classNames('mt-8', mapStyles({ textAlign: styles.self?.textAlign ?? 'left' }))}>
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="inline-flex items-center justify-center px-5 py-4 text-lg transition border-2 hover:-translate-y-1.5 disabled:opacity-50"
-                                style={{
-                                    color: '#00A8FF',
-                                    borderColor: '#00A8FF'
-                                }}
-                            >
-                                {isSubmitting ? 'Sending...' : submitLabel}
-                            </button>
-                        </div>
-                    </>
+                <div className={classNames('mt-8', mapStyles({ textAlign: styles.self?.textAlign ?? 'left' }))}>
+                    <button
+                        type="submit"
+                        className="inline-flex items-center justify-center px-5 py-4 text-lg transition border-2 hover:-translate-y-1.5"
+                        style={{ color: '#00A8FF' }}
+                    >
+                        {submitLabel}
+                    </button>
+                </div>
+
+                {statusMessage && (
+                    <p className="mt-4 text-lg font-semibold" style={{ color: statusColor }}>
+                        {statusMessage}
+                    </p>
                 )}
-
-                {isSubmitted && (
-                    <div className="mt-8 text-lg font-medium" style={{ color: '#00A8FF' }}>
-                        {"Message sent successfully. I'll be in touch soon."}
-                    </div>
-                )}
-
-                {error && <div className="mt-8 text-red-500 font-medium">{error}</div>}
             </form>
         </Annotated>
     );
