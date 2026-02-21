@@ -1,79 +1,92 @@
-import classNames from 'classnames';
-import * as React from 'react';
-
 import { Annotated } from '@/components/Annotated';
 import { DynamicComponent } from '@/components/components-registry';
 import { mapStylesToClassNames as mapStyles } from '@/utils/map-styles-to-class-names';
+import classNames from 'classnames';
+import * as React from 'react';
 
 export default function FormBlock(props) {
-    const formRef = React.useRef<HTMLFormElement>(null);
+    const formRef = React.createRef<HTMLFormElement>();
     const { elementId, className, fields = [], submitLabel, styles = {} } = props;
+    const [submitted, setSubmitted] = React.useState(false);
+    const [error, setError] = React.useState(false);
 
-    const [status, setStatus] = React.useState('');
-    const [statusColor, setStatusColor] = React.useState('#00A8FF'); // Accent blue
+    if (fields.length === 0) {
+        return null;
+    }
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+
         const form = formRef.current;
         if (!form) return;
 
-        const formData = new FormData(form);
-        const body = new URLSearchParams(formData as any).toString();
+        const data = new FormData(form);
 
+        // Post to Netlify form handler
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body
+            body: new URLSearchParams(data as any).toString()
         })
             .then((response) => {
                 if (response.ok) {
-                    setStatus('Message sent successfully. I&apos;ll be in touch soon.');
-                    setStatusColor('#00A8FF'); // Accent blue
+                    setSubmitted(true);
+                    setError(false);
                     form.reset();
                 } else {
-                    throw new Error('Failed to submit');
+                    setSubmitted(false);
+                    setError(true);
                 }
             })
             .catch(() => {
-                setStatus('Oops — something went wrong. Please try again.');
-                setStatusColor('red');
+                setSubmitted(false);
+                setError(true);
             });
     }
 
     return (
         <Annotated content={props}>
             <form
-                ref={formRef}
                 name={elementId || 'contact'}
-                id={elementId || 'contact'}
+                id={elementId}
+                ref={formRef}
                 className={className}
-                method="POST"
-                action="/"
-                data-netlify="true" // <-- ONLY this is required
                 onSubmit={handleSubmit}
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
             >
-                {/* Hidden input required by Netlify */}
+                {/* Hidden inputs for Netlify */}
                 <input type="hidden" name="form-name" value={elementId || 'contact'} />
+                <input type="hidden" name="bot-field" />
 
+                {/* Form fields */}
                 <div className="grid gap-6 sm:grid-cols-2">
                     {fields.map((field, index) => (
                         <DynamicComponent key={index} {...field} />
                     ))}
                 </div>
 
+                {/* Submit button */}
                 <div className={classNames('mt-8', mapStyles({ textAlign: styles.self?.textAlign ?? 'left' }))}>
                     <button
                         type="submit"
                         className="inline-flex items-center justify-center px-5 py-4 text-lg transition border-2 hover:-translate-y-1.5"
-                        style={{ color: '#00A8FF', borderColor: '#00A8FF' }}
+                        style={{ color: '#00A8FF' }}
                     >
                         {submitLabel}
                     </button>
                 </div>
 
-                {status && (
-                    <p className="mt-4 text-lg font-semibold" style={{ color: statusColor }}>
-                        <span dangerouslySetInnerHTML={{ __html: status }} />
+                {/* Success and error messages */}
+                {submitted && (
+                    <p className="mt-4" style={{ color: '#00A8FF' }}>
+                        Message sent successfully. I&apos;ll be in touch soon.
+                    </p>
+                )}
+                {error && (
+                    <p className="mt-4" style={{ color: 'red' }}>
+                        Oops! Something went wrong. Please try again.
                     </p>
                 )}
             </form>
