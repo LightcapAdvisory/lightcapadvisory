@@ -10,14 +10,13 @@ export default function FormBlock(props) {
     const { elementId, className, fields = [], submitLabel, styles = {} } = props;
 
     const [status, setStatus] = React.useState('');
-    const [statusColor, setStatusColor] = React.useState('#00A8FF');
+    const [statusColor, setStatusColor] = React.useState('#00A8FF'); // Accent blue
 
-    function handleSubmit(event) {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const form = formRef.current;
         if (!form) return;
 
-        // Serialize
         const formData = new FormData(form);
         const body = new URLSearchParams(formData as any).toString();
 
@@ -29,7 +28,7 @@ export default function FormBlock(props) {
             .then((response) => {
                 if (response.ok) {
                     setStatus('Message sent successfully. I&apos;ll be in touch soon.');
-                    setStatusColor('#00A8FF');
+                    setStatusColor('#00A8FF'); // Accent blue
                     form.reset();
                 } else {
                     throw new Error('Failed to submit');
@@ -43,7 +42,6 @@ export default function FormBlock(props) {
 
     return (
         <Annotated content={props}>
-            {/* NETLIFY WILL DETECT THIS FORM AT BUILD TIME */}
             <form
                 ref={formRef}
                 name={elementId || 'contact'}
@@ -51,11 +49,10 @@ export default function FormBlock(props) {
                 className={className}
                 method="POST"
                 action="/"
-                data-netlify="true"
-                netlify="true"
+                data-netlify="true" // <-- ONLY this is required
                 onSubmit={handleSubmit}
             >
-                {/* REQUIRED: Netlify form hidden field */}
+                {/* Hidden input required by Netlify */}
                 <input type="hidden" name="form-name" value={elementId || 'contact'} />
 
                 <div className="grid gap-6 sm:grid-cols-2">
@@ -76,7 +73,6 @@ export default function FormBlock(props) {
 
                 {status && (
                     <p className="mt-4 text-lg font-semibold" style={{ color: statusColor }}>
-                        {/* This will render unescaped apostrophes in HTML */}
                         <span dangerouslySetInnerHTML={{ __html: status }} />
                     </p>
                 )}
