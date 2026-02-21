@@ -50,9 +50,12 @@ body {
     h4,
     h5,
     h6 {
-        @apply break-words;
+        /* Prevent mid-word breaking */
+        word-break: keep-all;
+        overflow-wrap: normal;
+        hyphens: none;
+
         font-family: var(--font-secondary);
-        /* DM Sans */
         line-height: 1.2;
         font-weight: 500;
         letter-spacing: 0.02em;
