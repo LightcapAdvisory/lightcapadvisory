@@ -202,8 +202,8 @@ body {
 @media (max-width: 1024px) {
     .number-behind {
         font-size: clamp(3rem, 12vw, 7rem);
-        top: -3rem;
-        left: -2.8rem;
+        top: -3.25rem;
+        left: -3.75rem;
         opacity: 0.5;
     }
 }
