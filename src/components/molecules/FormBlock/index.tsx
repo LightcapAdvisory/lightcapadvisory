@@ -30,8 +30,8 @@ export default function FormBlock() {
         });
     }
 
-    // This specific color matches the standard placeholder gray
-    const placeholderColor = '#9ca3af';
+    // This hex matches the 1px stroke to the placeholder text
+    const grayColor = '#9ca3af';
 
     return (
         <Annotated content={{}}>
@@ -60,8 +60,9 @@ export default function FormBlock() {
                             name={field.name}
                             placeholder={field.placeholder}
                             required={field.required}
-                            // border-[#9ca3af] matches the placeholder text color
-                            className="border border-[#9ca3af] placeholder-[#9ca3af] !rounded-none px-3 py-2 w-full bg-white text-black focus:outline-none focus:border-blue-600 appearance-none"
+                            // bg-transparent makes it take the webpage background color
+                            // border-[1px] ensures a thin, crisp stroke
+                            className="bg-transparent border-[1px] border-[#9ca3af] placeholder-[#9ca3af] text-inherit !rounded-none px-3 py-2 w-full focus:outline-none focus:border-blue-600 appearance-none"
                             style={{ borderRadius: '0px' }}
                         />
                     ))}
@@ -69,7 +70,7 @@ export default function FormBlock() {
                         name="messageInquiry"
                         placeholder="Type your message / inquiry here"
                         rows={4}
-                        className="border border-[#9ca3af] placeholder-[#9ca3af] !rounded-none px-3 py-2 w-full col-span-1 sm:col-span-2 bg-white text-black focus:outline-none focus:border-blue-600 appearance-none"
+                        className="bg-transparent border-[1px] border-[#9ca3af] placeholder-[#9ca3af] text-inherit !rounded-none px-3 py-2 w-full col-span-1 sm:col-span-2 focus:outline-none focus:border-blue-600 appearance-none"
                         style={{ borderRadius: '0px' }}
                     />
                 </div>
