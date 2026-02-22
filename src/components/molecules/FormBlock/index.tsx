@@ -30,6 +30,9 @@ export default function FormBlock() {
         });
     }
 
+    // This specific color matches the standard placeholder gray
+    const placeholderColor = '#9ca3af';
+
     return (
         <Annotated content={{}}>
             <form
@@ -45,44 +48,37 @@ export default function FormBlock() {
                 <input type="hidden" name="bot-field" />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full text-left">
-                    <input
-                        type="text"
-                        name="firstName"
-                        placeholder="First Name"
-                        required
-                        className="border border-gray-300 rounded-none px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    />
-                    <input
-                        type="text"
-                        name="lastName"
-                        placeholder="Last Name"
-                        className="border border-gray-300 rounded-none px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        required
-                        className="border border-gray-300 rounded-none px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    />
-                    <input
-                        type="text"
-                        name="companyName"
-                        placeholder="Company Name"
-                        className="border border-gray-300 rounded-none px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    />
+                    {[
+                        { name: 'firstName', placeholder: 'First Name', required: true },
+                        { name: 'lastName', placeholder: 'Last Name', required: false },
+                        { name: 'email', placeholder: 'Email', required: true },
+                        { name: 'companyName', placeholder: 'Company Name', required: false }
+                    ].map((field) => (
+                        <input
+                            key={field.name}
+                            type={field.name === 'email' ? 'email' : 'text'}
+                            name={field.name}
+                            placeholder={field.placeholder}
+                            required={field.required}
+                            // border-[#9ca3af] matches the placeholder text color
+                            className="border border-[#9ca3af] placeholder-[#9ca3af] !rounded-none px-3 py-2 w-full bg-white text-black focus:outline-none focus:border-blue-600 appearance-none"
+                            style={{ borderRadius: '0px' }}
+                        />
+                    ))}
                     <textarea
                         name="messageInquiry"
                         placeholder="Type your message / inquiry here"
                         rows={4}
-                        className="border border-gray-300 rounded-none px-3 py-2 w-full col-span-1 sm:col-span-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="border border-[#9ca3af] placeholder-[#9ca3af] !rounded-none px-3 py-2 w-full col-span-1 sm:col-span-2 bg-white text-black focus:outline-none focus:border-blue-600 appearance-none"
+                        style={{ borderRadius: '0px' }}
                     />
                 </div>
 
                 <div className="mt-6 text-center">
                     <button
                         type="submit"
-                        className="inline-flex items-center justify-center px-10 py-3 text-lg text-white bg-blue-600 rounded-none hover:bg-blue-700 transition font-semibold"
+                        className="inline-flex items-center justify-center px-10 py-3 text-lg text-white bg-blue-600 !rounded-none hover:bg-blue-700 transition font-semibold"
+                        style={{ borderRadius: '0px' }}
                     >
                         SEND MESSAGE
                     </button>
