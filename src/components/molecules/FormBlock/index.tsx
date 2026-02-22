@@ -38,8 +38,7 @@ export default function FormBlock() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                // mt-20 provides the space between text and form
-                className="w-full block relative z-10 mt-20 font-primary"
+                className="w-full block relative z-10 mt-12 font-primary"
                 style={{ display: 'block', width: '100%' }}
             >
                 <input type="hidden" name="form-name" value="contact" />
@@ -58,7 +57,6 @@ export default function FormBlock() {
                             name={field.name}
                             placeholder={field.placeholder}
                             required={field.required}
-                            // Using border-gray-300 (#d1d5db) for that 1px stroke
                             className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] text-inherit !rounded-none px-4 py-3 w-full focus:outline-none focus:border-[#00A8FF] appearance-none"
                             style={{ borderRadius: '0px' }}
                         />
@@ -72,21 +70,31 @@ export default function FormBlock() {
                     />
                 </div>
 
-                {/* Button container set to text-center */}
                 <div className="mt-10 text-center">
                     <button
                         type="submit"
-                        // Classes pulled directly from your Action component:
-                        // border-2, transition, hover:-translate-y-1.5, py-4, px-5
-                        className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-secondary font-bold uppercase tracking-widest transition border-2 border-[#00A8FF] text-[#00A8FF] hover:-translate-y-1.5 !rounded-none"
-                        style={{ borderRadius: '0px', color: '#00A8FF', borderColor: '#00A8FF' }}
+                        className="relative inline-flex items-center justify-center px-8 py-4 text-lg transition border-2 hover:-translate-y-1.5 !rounded-none"
+                        style={{
+                            borderRadius: '0px',
+                            color: '#00A8FF',
+                            borderColor: '#00A8FF',
+                            fontFamily: "'DM Sans', sans-serif",
+                            // Changed from 700 to 500 to match your h1/h2 weight
+                            fontWeight: 500,
+                            // Matches the 0.02em in your main.css base layer
+                            letterSpacing: '0.02em',
+                            textTransform: 'uppercase'
+                        }}
                     >
                         SEND MESSAGE
                     </button>
                 </div>
 
                 {submitted && (
-                    <p className="mt-6 text-center font-medium font-primary" style={{ color: '#00A8FF' }}>
+                    <p
+                        className="mt-6 text-center font-medium"
+                        style={{ color: '#00A8FF', fontFamily: "'Inter', sans-serif" }}
+                    >
                         Message sent successfully. I&apos;ll be in touch soon.
                     </p>
                 )}
