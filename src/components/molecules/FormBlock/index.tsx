@@ -38,8 +38,7 @@ export default function FormBlock() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                // Spacing shrunk to mt-12 as requested
-                className="w-full block relative z-10 mt-12 font-primary"
+                className="w-full block relative z-10 mt-12"
                 style={{ display: 'block', width: '100%' }}
             >
                 <input type="hidden" name="form-name" value="contact" />
@@ -58,32 +57,41 @@ export default function FormBlock() {
                             name={field.name}
                             placeholder={field.placeholder}
                             required={field.required}
-                            className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] text-inherit !rounded-none px-4 py-3 w-full focus:outline-none focus:border-[#00A8FF] appearance-none"
-                            style={{ borderRadius: '0px' }}
+                            className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] !rounded-none px-4 py-3 w-full focus:outline-none focus:border-[#00A8FF] appearance-none"
+                            style={{ borderRadius: '0px', fontFamily: 'Inter, sans-serif' }}
                         />
                     ))}
                     <textarea
                         name="messageInquiry"
                         placeholder="Type your message / inquiry here"
                         rows={4}
-                        className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] text-inherit !rounded-none px-4 py-3 w-full col-span-1 sm:col-span-2 focus:outline-none focus:border-[#00A8FF] appearance-none"
-                        style={{ borderRadius: '0px' }}
+                        className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] !rounded-none px-4 py-3 w-full col-span-1 sm:col-span-2 focus:outline-none focus:border-[#00A8FF] appearance-none"
+                        style={{ borderRadius: '0px', fontFamily: 'Inter, sans-serif' }}
                     />
                 </div>
 
                 <div className="mt-10 text-center">
                     <button
                         type="submit"
-                        className="relative inline-flex items-center justify-center px-8 py-4 text-lg transition border-2 hover:-translate-y-1.5 !rounded-none"
+                        className="inline-flex items-center justify-center transition hover:-translate-y-1.5 antialiased"
                         style={{
+                            // Exact matches from your Computed Tab
+                            height: '63.2px',
+                            minWidth: '226.6px',
+                            padding: '16px 20px',
+                            backgroundColor: 'transparent',
+                            border: '1.6px solid rgb(0, 168, 255)',
+                            color: 'rgb(0, 168, 255)',
                             borderRadius: '0px',
-                            color: '#00A8FF',
-                            borderColor: '#00A8FF',
-                            fontFamily: "'DM Sans', sans-serif",
-                            // Switched to 300 (Light) for maximum elegance
-                            fontWeight: 300,
-                            letterSpacing: '0.02em',
-                            textTransform: 'uppercase'
+
+                            // Font Logic
+                            fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                            fontSize: '18px',
+                            fontWeight: 400,
+                            lineHeight: '28px',
+                            letterSpacing: 'normal',
+                            textTransform: 'none', // Your computed tab says 'none'
+                            WebkitFontSmoothing: 'antialiased'
                         }}
                     >
                         SEND MESSAGE
@@ -93,7 +101,7 @@ export default function FormBlock() {
                 {submitted && (
                     <p
                         className="mt-6 text-center font-medium"
-                        style={{ color: '#00A8FF', fontFamily: "'Inter', sans-serif" }}
+                        style={{ color: '#00A8FF', fontFamily: 'Inter, sans-serif' }}
                     >
                         Message sent successfully. I&apos;ll be in touch soon.
                     </p>
