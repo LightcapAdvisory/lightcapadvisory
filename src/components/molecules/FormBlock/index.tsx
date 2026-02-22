@@ -38,8 +38,8 @@ export default function FormBlock() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                // Changed mt-20 to mt-12 to shrink the gap
-                className="w-full block relative z-10 mt-8 font-primary"
+                // Spacing shrunk to mt-12 as requested
+                className="w-full block relative z-10 mt-12 font-primary"
                 style={{ display: 'block', width: '100%' }}
             >
                 <input type="hidden" name="form-name" value="contact" />
@@ -80,8 +80,8 @@ export default function FormBlock() {
                             color: '#00A8FF',
                             borderColor: '#00A8FF',
                             fontFamily: "'DM Sans', sans-serif",
-                            // Dropped to 400 for a lighter, cleaner look
-                            fontWeight: 400,
+                            // Switched to 300 (Light) for maximum elegance
+                            fontWeight: 300,
                             letterSpacing: '0.02em',
                             textTransform: 'uppercase'
                         }}
