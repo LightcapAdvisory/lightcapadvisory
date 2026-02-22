@@ -9,7 +9,15 @@ import { resolveStaticProps } from '@/utils/static-props-resolvers';
 const Page: React.FC<PageComponentProps> = (props) => {
     const { global, ...page } = props;
     const { site } = global;
-    const title = seoGenerateTitle(page, site);
+
+    // Generate the original title from your site data
+    let title = seoGenerateTitle(page, site);
+
+    // If the title is "Home", force it to your brand name
+    if (title === 'Home' || title === 'home') {
+        title = 'Lightcap Advisory';
+    }
+
     const metaTags = seoGenerateMetaTags(page, site);
     const metaDescription = seoGenerateMetaDescription(page, site);
 
@@ -20,7 +28,7 @@ const Page: React.FC<PageComponentProps> = (props) => {
                 {metaDescription && <meta name="description" content={metaDescription} />}
                 {metaTags.map((metaTag) => {
                     if (metaTag.format === 'property') {
-                        // OpenGraph meta tags (og:*) should be have the format <meta property="og:…" content="…">
+                        // OpenGraph meta tags (og:*) should have the format <meta property="og:…" content="…">
                         return <meta key={metaTag.property} property={metaTag.property} content={metaTag.content} />;
                     }
                     return <meta key={metaTag.property} name={metaTag.property} content={metaTag.content} />;

@@ -202,7 +202,7 @@ body {
 @media (max-width: 1024px) {
     .number-behind {
         font-size: clamp(3rem, 12vw, 7rem);
-        top: -4rem;
+        top: -2.25rem;
         left: -3rem;
         opacity: 0.5;
     }

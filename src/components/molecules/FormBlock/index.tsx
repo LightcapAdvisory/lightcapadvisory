@@ -18,7 +18,8 @@ export default function FormBlock() {
         const formData = new FormData(form);
         formData.set('form-name', 'contact');
 
-        fetch('/form-check.html', {
+        // We post to '/' so Netlify catches it without needing a physical .html file
+        fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData as any).toString()
@@ -90,7 +91,7 @@ export default function FormBlock() {
                             fontWeight: 400,
                             lineHeight: '28px',
                             letterSpacing: 'normal',
-                            textTransform: 'none', // Your computed tab says 'none'
+                            textTransform: 'none',
                             WebkitFontSmoothing: 'antialiased'
                         }}
                     >
