@@ -209,16 +209,6 @@ body {
 }
 
 
-/* Small Tablet / Large Phone */
-@media (max-width: 768px) {
-    .number-behind {
-        font-size: clamp(2.5rem, 16vw, 5rem);
-        top: -2rem;
-        left: -3.75rem;
-        opacity: 0.5;
-    }
-}
-
 @media (max-width: 640px) {
     .number-behind {
         font-size: clamp(2.5rem, 16vw, 5rem);
