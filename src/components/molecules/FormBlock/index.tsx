@@ -38,8 +38,9 @@ export default function FormBlock() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                // mt-12 adds the gap between your title text and the form
-                className="w-full block relative z-10 mt-12"
+                // mt-20 ensures a clear section break.
+                // font-primary (Inter) matches your body text
+                className="w-full block relative z-10 mt-20 font-primary"
                 style={{ display: 'block', width: '100%' }}
             >
                 <input type="hidden" name="form-name" value="contact" />
@@ -58,8 +59,8 @@ export default function FormBlock() {
                             name={field.name}
                             placeholder={field.placeholder}
                             required={field.required}
-                            // Using border-gray-300 and bg-transparent
-                            className="bg-transparent border border-gray-300 placeholder-gray-400 text-inherit !rounded-none px-3 py-2 w-full focus:outline-none focus:border-blue-600 appearance-none"
+                            // border-[#d1d5db] is the hex for gray-300
+                            className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] text-inherit !rounded-none px-4 py-3 w-full focus:outline-none focus:border-[#00A8FF] appearance-none"
                             style={{ borderRadius: '0px' }}
                         />
                     ))}
@@ -67,15 +68,16 @@ export default function FormBlock() {
                         name="messageInquiry"
                         placeholder="Type your message / inquiry here"
                         rows={4}
-                        className="bg-transparent border border-gray-300 placeholder-gray-400 text-inherit !rounded-none px-3 py-2 w-full col-span-1 sm:col-span-2 focus:outline-none focus:border-blue-600 appearance-none"
+                        className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] text-inherit !rounded-none px-4 py-3 w-full col-span-1 sm:col-span-2 focus:outline-none focus:border-[#00A8FF] appearance-none"
                         style={{ borderRadius: '0px' }}
                     />
                 </div>
 
-                <div className="mt-8 text-center">
+                <div className="mt-10">
                     <button
                         type="submit"
-                        className="inline-flex items-center justify-center px-10 py-3 text-lg text-white bg-blue-600 !rounded-none hover:bg-blue-700 transition font-semibold"
+                        // Using 'font-secondary' (DM Sans) and '#00A8FF' blue to match Hero actions perfectly
+                        className="inline-flex items-center justify-center px-10 py-4 text-white bg-[#00A8FF] !rounded-none hover:bg-[#0086cc] transition-colors duration-200 font-secondary font-bold uppercase tracking-wider text-sm md:text-base"
                         style={{ borderRadius: '0px' }}
                     >
                         SEND MESSAGE
@@ -83,7 +85,7 @@ export default function FormBlock() {
                 </div>
 
                 {submitted && (
-                    <p className="mt-6 text-center font-medium" style={{ color: '#00A8FF' }}>
+                    <p className="mt-6 font-medium font-primary" style={{ color: '#00A8FF' }}>
                         Message sent successfully. I&apos;ll be in touch soon.
                     </p>
                 )}
