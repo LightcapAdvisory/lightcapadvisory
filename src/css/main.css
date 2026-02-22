@@ -208,23 +208,14 @@ body {
     }
 }
 
-/* Tablet / Landscape Fix */
-@media (max-width: 1180px) {
-    .number-behind {
-        font-size: clamp(3rem, 12vw, 7rem);
-        top: -3rem;
-        /* Pull the number in closer to the text so it doesn't hit the screen edge */
-        left: -2rem; 
-        opacity: 0.5;
-    }
-}
 
 /* Small Tablet / Large Phone */
 @media (max-width: 768px) {
     .number-behind {
         font-size: clamp(2.5rem, 16vw, 5rem);
         top: -2.25rem;
-        left: -2.75rem;
+        left: -2rem;
+        opacity: 0.5;
     }
 }
 
