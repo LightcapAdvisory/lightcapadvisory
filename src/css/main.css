@@ -214,7 +214,7 @@ body {
     .number-behind {
         font-size: clamp(2.5rem, 16vw, 5rem);
         top: -2rem;
-        left: -2.8rem;
+        left: -3.75rem;
         opacity: 0.5;
     }
 }
