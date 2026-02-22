@@ -38,8 +38,7 @@ export default function FormBlock() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                // mt-20 ensures a clear section break.
-                // font-primary (Inter) matches your body text
+                // mt-20 provides the space between text and form
                 className="w-full block relative z-10 mt-20 font-primary"
                 style={{ display: 'block', width: '100%' }}
             >
@@ -59,7 +58,7 @@ export default function FormBlock() {
                             name={field.name}
                             placeholder={field.placeholder}
                             required={field.required}
-                            // border-[#d1d5db] is the hex for gray-300
+                            // Using border-gray-300 (#d1d5db) for that 1px stroke
                             className="bg-transparent border border-[#d1d5db] placeholder-[#9ca3af] text-inherit !rounded-none px-4 py-3 w-full focus:outline-none focus:border-[#00A8FF] appearance-none"
                             style={{ borderRadius: '0px' }}
                         />
@@ -73,19 +72,21 @@ export default function FormBlock() {
                     />
                 </div>
 
-                <div className="mt-10">
+                {/* Button container set to text-center */}
+                <div className="mt-10 text-center">
                     <button
                         type="submit"
-                        // Using 'font-secondary' (DM Sans) and '#00A8FF' blue to match Hero actions perfectly
-                        className="inline-flex items-center justify-center px-10 py-4 text-white bg-[#00A8FF] !rounded-none hover:bg-[#0086cc] transition-colors duration-200 font-secondary font-bold uppercase tracking-wider text-sm md:text-base"
-                        style={{ borderRadius: '0px' }}
+                        // Classes pulled directly from your Action component:
+                        // border-2, transition, hover:-translate-y-1.5, py-4, px-5
+                        className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-secondary font-bold uppercase tracking-widest transition border-2 border-[#00A8FF] text-[#00A8FF] hover:-translate-y-1.5 !rounded-none"
+                        style={{ borderRadius: '0px', color: '#00A8FF', borderColor: '#00A8FF' }}
                     >
                         SEND MESSAGE
                     </button>
                 </div>
 
                 {submitted && (
-                    <p className="mt-6 font-medium font-primary" style={{ color: '#00A8FF' }}>
+                    <p className="mt-6 text-center font-medium font-primary" style={{ color: '#00A8FF' }}>
                         Message sent successfully. I&apos;ll be in touch soon.
                     </p>
                 )}
