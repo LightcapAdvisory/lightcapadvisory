@@ -1,6 +1,6 @@
 ---
 type: PageLayout
-title: Home
+title: Lightcap Advisory
 colors: colors-a
 sections:
   - elementId: ''
