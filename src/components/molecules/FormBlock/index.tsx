@@ -30,9 +30,6 @@ export default function FormBlock() {
         });
     }
 
-    // This hex matches the 1px stroke to the placeholder text
-    const grayColor = '#9ca3af';
-
     return (
         <Annotated content={{}}>
             <form
@@ -41,7 +38,8 @@ export default function FormBlock() {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
-                className="w-full block relative z-10"
+                // mt-12 adds the gap between your title text and the form
+                className="w-full block relative z-10 mt-12"
                 style={{ display: 'block', width: '100%' }}
             >
                 <input type="hidden" name="form-name" value="contact" />
@@ -60,9 +58,8 @@ export default function FormBlock() {
                             name={field.name}
                             placeholder={field.placeholder}
                             required={field.required}
-                            // bg-transparent makes it take the webpage background color
-                            // border-[1px] ensures a thin, crisp stroke
-                            className="bg-transparent border-[1px] border-[#9ca3af] placeholder-[#9ca3af] text-inherit !rounded-none px-3 py-2 w-full focus:outline-none focus:border-blue-600 appearance-none"
+                            // Using border-gray-300 and bg-transparent
+                            className="bg-transparent border border-gray-300 placeholder-gray-400 text-inherit !rounded-none px-3 py-2 w-full focus:outline-none focus:border-blue-600 appearance-none"
                             style={{ borderRadius: '0px' }}
                         />
                     ))}
@@ -70,12 +67,12 @@ export default function FormBlock() {
                         name="messageInquiry"
                         placeholder="Type your message / inquiry here"
                         rows={4}
-                        className="bg-transparent border-[1px] border-[#9ca3af] placeholder-[#9ca3af] text-inherit !rounded-none px-3 py-2 w-full col-span-1 sm:col-span-2 focus:outline-none focus:border-blue-600 appearance-none"
+                        className="bg-transparent border border-gray-300 placeholder-gray-400 text-inherit !rounded-none px-3 py-2 w-full col-span-1 sm:col-span-2 focus:outline-none focus:border-blue-600 appearance-none"
                         style={{ borderRadius: '0px' }}
                     />
                 </div>
 
-                <div className="mt-6 text-center">
+                <div className="mt-8 text-center">
                     <button
                         type="submit"
                         className="inline-flex items-center justify-center px-10 py-3 text-lg text-white bg-blue-600 !rounded-none hover:bg-blue-700 transition font-semibold"
@@ -86,7 +83,7 @@ export default function FormBlock() {
                 </div>
 
                 {submitted && (
-                    <p className="mt-4 text-center font-medium" style={{ color: '#00A8FF' }}>
+                    <p className="mt-6 text-center font-medium" style={{ color: '#00A8FF' }}>
                         Message sent successfully. I&apos;ll be in touch soon.
                     </p>
                 )}
