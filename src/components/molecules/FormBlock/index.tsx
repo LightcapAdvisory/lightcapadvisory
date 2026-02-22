@@ -18,17 +18,25 @@ export default function FormBlock() {
         const formData = new FormData(form);
         formData.set('form-name', 'contact');
 
-        // We post to '/' so Netlify catches it without needing a physical .html file
-        fetch('/', {
+        fetch('/__netlify_form_detection.html', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(formData as any).toString()
-        }).then((res) => {
-            if (res.ok) {
-                setSubmitted(true);
-                form.reset();
-            }
-        });
+        })
+            .then((res) => {
+                // If on Netlify and successful, OR if testing locally, show success
+                if (res.ok || window.location.hostname === 'localhost') {
+                    setSubmitted(true);
+                    form.reset();
+                }
+            })
+            .catch(() => {
+                // Fallback for local testing if the fetch fails
+                if (window.location.hostname === 'localhost') {
+                    setSubmitted(true);
+                    form.reset();
+                }
+            });
     }
 
     return (
@@ -76,7 +84,6 @@ export default function FormBlock() {
                         type="submit"
                         className="inline-flex items-center justify-center transition hover:-translate-y-1.5 antialiased"
                         style={{
-                            // Exact matches from your Computed Tab
                             height: '63.2px',
                             minWidth: '226.6px',
                             padding: '16px 20px',
@@ -84,8 +91,6 @@ export default function FormBlock() {
                             border: '1.6px solid rgb(0, 168, 255)',
                             color: 'rgb(0, 168, 255)',
                             borderRadius: '0px',
-
-                            // Font Logic
                             fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
                             fontSize: '18px',
                             fontWeight: 400,
